@@ -18,7 +18,7 @@ margin: 20
 
 const StyledHeader = styled.header`
   font-family: "GothamSSm-Bold";
-  line-height: 1.2;
+  line-height: 1.5;
   background-color: ${props => props.theme.colors.background.main};
   color: ${props => props.theme.colors.text.primary};
   width: auto;
@@ -33,6 +33,7 @@ const StyledHeader = styled.header`
   }
 
   @media (min-width: 992px) {
+    line-height: 1.2;
     height: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -73,7 +74,7 @@ const StyledSubtitle = styled.div`
   align-items: start;
   font-size: 12px;
 
-  @media (min-height: 992px) {
+  @media (min-width: 992px) {
     font-size: 18px;
   }
 `

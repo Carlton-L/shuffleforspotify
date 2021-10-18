@@ -22,8 +22,8 @@ const theme = {
       dark: "#131313",
     },
     hero: {
-      primary: "00d15c",
-      secondary: "0a3a9e"
+      primary: "#1ed760",
+      secondary: "rgb(41, 65, 171)"
     }
   }
 }

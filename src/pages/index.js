@@ -1,10 +1,13 @@
 import * as React from 'react';
-import Layout from '../layout/layout.js'
+import Layout from '../layout/layout.js';
+import Hero from '../components/hero.js'
 
 const IndexPage = () => {
   return (
     <Layout>
-      <h1>Content Placeholder</h1>
+      <Hero>
+        content
+      </Hero>
     </Layout>
   )
 }

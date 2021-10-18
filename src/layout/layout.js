@@ -8,6 +8,7 @@ import Footer from '../components/footer.js'
 import Theme from '../themes/theme.js';
 import GothamSSmMedium from '../fonts/GothamSSm-Medium.woff2';
 import GothamSSmBold from '../fonts/GothamSSm-Bold.woff2';
+import GothamSSmBook from '../fonts/GothamSSm-Book.woff2';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -15,6 +16,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: "GothamSSm-Bold";
     src: local('GothamSSm-Bold'),
     url(${GothamSSmBold}) format('woff2')
+  }
+  @font-face {
+    font-family: "GothamSSm-Book";
+    src: local('GothamSSm-Book'),
+    url(${GothamSSmBook}) format('woff2');
   }
   @font-face {
     font-family: "GothamSSm-Medium";
@@ -54,10 +60,7 @@ const Layout = ({
       <Seo title={title} description={description} image={image} path={path} />
       <ThemeProvider theme={Theme}>
         <Header />
-        {meta.title}
-        <main>
           {children}
-        </main>
         <Footer />
       </ThemeProvider>
     </>
