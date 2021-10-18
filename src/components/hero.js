@@ -15,18 +15,50 @@ const StyledHero = styled.main`
   overflow-y: hidden;
   -webkit-box-align: center;
   -webkit-box-pack: center;
+  background-image: url("https://res.cloudinary.com/carlton-dev/image/upload/v1634588509/Shuffle-for-Spotify/Hero-bg_lwqk3a.svg");
+  background-size: 300%;
+  background-position-x: 60%;
+  background-position-y: 30%;
+  -webkit-box-pack: center;
+  justify-content: center;
+  min-height: 846px;
+  
+  @media (min-width: 480px) {
+    background-image: url("https://res.cloudinary.com/carlton-dev/image/upload/v1634588509/Shuffle-for-Spotify/Hero-bg_lwqk3a.svg");
+    background-size: 250%;
+    background-position-x: 66%;
+    background-position-y: 40%;
+    -webkit-box-pack: center;
+    justify-content: center;
+    min-height: 846px;
+  }
+
+  @media (min-width: 1200px) {
+    background-image: url("https://res.cloudinary.com/carlton-dev/image/upload/v1634588509/Shuffle-for-Spotify/Hero-bg_lwqk3a.svg");
+    background-size: 175%;
+    background-position-x: 46%;
+    background-position-y: -10%;
+    -webkit-box-pack: center;
+    justify-content: center;
+    min-height: 846px;
+  }
+
 `
 
 const StyledHeroTitle = styled.h1`
-  font-size: 36px;
+  font-size: 48px;
   letter-spacing: -0.1rem;
   margin-bottom: 0px;
   padding: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
   
   @media (min-width: 748px) {
     letter-spacing: -0.35rem;
     font-size: 96px;
     margin-bottom: 20px;
+    margin-left: 180px;
+    margin-right: 180px;
   }
 `
 
