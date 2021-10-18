@@ -5,7 +5,7 @@ const StyledHero = styled.main`
   font-family: "GothamSSm-Bold";
   background-color: ${props => props.theme.colors.hero.secondary};
   color: ${props => props.theme.colors.hero.primary};
-  height: 70vh;
+  height: 100vh;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -65,6 +65,7 @@ const StyledHeroSubtitle = styled.p`
   font-family: "GothamSSm-Book";
   font-size: 14px;
   padding: 10px;
+  margin-bottom: 32px;
 
   @media (min-width: 748px) {
     font-size: 16px;
@@ -72,11 +73,32 @@ const StyledHeroSubtitle = styled.p`
   
 `
 
+ const StyledHeroButton = styled.button`
+  font-family: "GothamSSm-Medium";
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: ${props => props.theme.colors.hero.primary};
+  border: none;
+  color: ${props => props.theme.colors.hero.secondary};
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 32px;
+  padding-right: 32px;
+  border-radius: 500px;
+  
+  &:hover {
+    background-color: ${props => props.theme.colors.hero.hover};
+    transform: scale(1.1)
+    
+  }
+ `
+
 const Hero = () => {
   return (
     <StyledHero>
       <StyledHeroTitle>Premium Blends</StyledHeroTitle>
       <StyledHeroSubtitle>Genuinely random shuffle. No weighted algorithm.</StyledHeroSubtitle>
+      <StyledHeroButton>Try it out</StyledHeroButton>
     </StyledHero>
   )
 }
