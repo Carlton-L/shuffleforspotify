@@ -5,7 +5,7 @@ const StyledHero = styled.main`
   font-family: "GothamSSm-Bold";
   background-color: ${props => props.theme.colors.hero.secondary};
   color: ${props => props.theme.colors.hero.primary};
-  height: 100vh;
+  height: 70vh;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -24,6 +24,7 @@ const StyledHero = styled.main`
   min-height: 846px;
   
   @media (min-width: 480px) {
+    height: 100vh;
     background-image: url("https://res.cloudinary.com/carlton-dev/image/upload/v1634588509/Shuffle-for-Spotify/Hero-bg_lwqk3a.svg");
     background-size: 250%;
     background-position-x: 66%;
