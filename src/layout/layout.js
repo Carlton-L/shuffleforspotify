@@ -2,8 +2,9 @@ import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import reset from 'styled-reset'
-import Seo from './seo.js';
-import Header from './header.js'
+import Seo from '../components/seo.js';
+import Header from '../components/header.js'
+import Footer from '../components/footer.js'
 import Theme from '../themes/theme.js';
 import GothamSSmMedium from '../fonts/GothamSSm-Medium.woff2';
 import GothamSSmBold from '../fonts/GothamSSm-Bold.woff2';
@@ -11,9 +12,13 @@ import GothamSSmBold from '../fonts/GothamSSm-Bold.woff2';
 const GlobalStyle = createGlobalStyle`
   ${reset}
   @font-face {
-    font-family: "GothamSSm";
-    src: local('GothamSSm-Bold'), local('GothamSSm-Medium'),
-    url(${GothamSSmBold}) format('woff2'),
+    font-family: "GothamSSm-Bold";
+    src: local('GothamSSm-Bold'),
+    url(${GothamSSmBold}) format('woff2')
+  }
+  @font-face {
+    font-family: "GothamSSm-Medium";
+    src: local('GothamSSm-Medium'),
     url(${GothamSSmMedium}) format('woff2');
   }
   body {
@@ -48,11 +53,12 @@ const Layout = ({
       <GlobalStyle />
       <Seo title={title} description={description} image={image} path={path} />
       <ThemeProvider theme={Theme}>
-      <Header />
-      {meta.title}
-      <main>
-      {children}
-      </main>
+        <Header />
+        {meta.title}
+        <main>
+          {children}
+        </main>
+        <Footer />
       </ThemeProvider>
     </>
   )

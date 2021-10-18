@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Layout from '../components/layout.js'
+import Layout from '../layout/layout.js'
 
 const IndexPage = () => {
   return (

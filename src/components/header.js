@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled, {withTheme} from 'styled-components';
+import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
 
 /*
@@ -17,7 +17,7 @@ margin: 20
 
 
 const StyledHeader = styled.header`
-  font-family: "GothamSSm";
+  font-family: "GothamSSm-Bold";
   line-height: 1.2;
   background-color: ${props => props.theme.colors.background.main};
   color: ${props => props.theme.colors.text.primary};
@@ -47,8 +47,14 @@ const StyledHeaderContainer = styled.div`
   justify-content: space-between;
   margin: auto;
 
+  @media (min-width: 992px) {
+    max-width: 992px;
+    width: 992px;
+  }
+
   @media (min-width: 1200px) {
     max-width: 1170px;
+    width: 1170px;
   }
 `
 
@@ -100,4 +106,4 @@ const Header = (props) => {
   )
 }
 
-export default withTheme(Header);
+export default Header;
