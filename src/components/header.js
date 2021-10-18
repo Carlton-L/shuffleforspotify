@@ -80,6 +80,7 @@ const StyledImageContainer = styled.div`
   @media (min-width: 992px) {
     height: 40px;
     width: 133px;
+    margin-left: 20px;
   }
 `
 const Header = (props) => {
