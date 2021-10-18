@@ -21,7 +21,6 @@ const StyledHero = styled.main`
   background-position-y: 30%;
   -webkit-box-pack: center;
   justify-content: center;
-  min-height: 846px;
   
   @media (min-width: 480px) {
     height: 100vh;
@@ -31,9 +30,8 @@ const StyledHero = styled.main`
     background-position-y: 40%;
     -webkit-box-pack: center;
     justify-content: center;
-    min-height: 846px;
   }
-
+  
   @media (min-width: 1200px) {
     background-image: url("https://res.cloudinary.com/carlton-dev/image/upload/v1634588509/Shuffle-for-Spotify/Hero-bg_lwqk3a.svg");
     background-size: 175%;
