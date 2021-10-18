@@ -1,0 +1,42 @@
+{
+  "name": "shuffleforspotify",
+  "version": "1.0.0",
+  "description": "Simple frontend-only web app for shuffling songs from Spotify Playlists or libraries into the user's queue. Build using Spotify's web API.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carlton-L/shuffleforspotify.git"
+  },
+  "author": {
+    "name": "Carlton Lindsay",
+    "email": "carlton.lindsay@protonmail.com",
+    "url": "https://carlton.dev"
+  },
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/Carlton-L/shuffleforspotify/issues"
+  },
+  "homepage": "https://github.com/Carlton-L/shuffleforspotify#readme",
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.13.2",
+    "gatsby": "^3.14.3",
+    "gatsby-plugin-image": "^1.14.1",
+    "gatsby-plugin-react-helmet": "^4.14.0",
+    "gatsby-plugin-sharp": "^3.14.1",
+    "gatsby-plugin-styled-components": "^4.14.0",
+    "gatsby-source-filesystem": "^3.14.0",
+    "gatsby-transformer-sharp": "^3.14.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.3.1"
+  }
+}
