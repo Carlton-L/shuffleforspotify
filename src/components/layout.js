@@ -5,11 +5,18 @@ import reset from 'styled-reset'
 import Seo from './seo.js';
 import Header from './header.js'
 import Theme from '../themes/theme.js';
+import GothamSSmMedium from '../fonts/GothamSSm-Medium.woff2';
+import GothamSSmBold from '../fonts/GothamSSm-Bold.woff2';
 
 const GlobalStyle = createGlobalStyle`
-${reset}
+  ${reset}
+  @font-face {
+    font-family: "GothamSSm";
+    src: local('GothamSSm-Bold'), local('GothamSSm-Medium'),
+    url(${GothamSSmBold}) format('woff2'),
+    url(${GothamSSmMedium}) format('woff2');
+  }
   body {
-    display: -moz-inline-stack;
     box-sizing: border-box;
     margin: 0;
     padding: 0;

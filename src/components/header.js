@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled, {withTheme} from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
-// import StyledHeader from './styledHeader'
 
 /*
 Header breakpoints:
@@ -18,12 +17,16 @@ margin: 20
 
 
 const StyledHeader = styled.header`
+  font-family: "GothamSSm";
+  line-height: 1.2;
   background-color: ${props => props.theme.colors.background.main};
   color: ${props => props.theme.colors.text.primary};
   width: auto;
   height: 34px;
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   @media (min-width: 748px) {
 
@@ -43,6 +46,10 @@ const StyledHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: auto;
+
+  @media (min-width: 1200px) {
+    max-width: 1170px;
+  }
 `
 
 const StyledTitle = styled.div`
