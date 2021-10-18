@@ -1,4 +1,4 @@
-import * as React from 'react'
+
 import styled from 'styled-components'
 
 const StyledHeader = styled.header`
@@ -19,7 +19,5 @@ const StyledHeader = styled.header`
     padding-bottom: 20px;
   }
 `
-
-
 
 export default StyledHeader

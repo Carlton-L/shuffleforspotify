@@ -1,20 +1,10 @@
 const theme = {
-  fonts: {
-    main:"",
-    round:"",
-    code:""
-  },
-  color: {
-    contrastText: "#000000",
-    backgroundColor: "00ff00"
-  },
   colors: {
     text: {
       primary: "#ffffff",
       secondary: "#b3b3b3",
       subtitle: "#919496",
-      disabled: "",
-      contrast: "#000000"
+      contrast: "#000000",
     },
     primary: {
       main: "#1db954",

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkshuffleforspotify=self.webpackChunkshuffleforspotify||[]).push([[682],{5518:function(e,t,f){f.r(t);var l=f(7294),n=f(6107);t.default=function(){return l.createElement(n.Z,null,l.createElement("h1",null,"Content Placeholder"))}}}]);
+//# sourceMappingURL=component---src-pages-about-js-60191c3243f64be4feb5.js.map

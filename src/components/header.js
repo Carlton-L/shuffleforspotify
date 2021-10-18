@@ -1,7 +1,7 @@
 import * as React from 'react'
-import styled from 'styled-components';
+import styled, {withTheme} from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
-import StyledHeader from './styledHeader'
+// import StyledHeader from './styledHeader'
 
 /*
 Header breakpoints:
@@ -15,37 +15,26 @@ margin: 20
 748 max width of header elements
 */
 
-// const StyledHeader = styled.header`
-//   background-color: ${props => props.theme.colors.background.main};
-//   color: ${props => props.theme.colors.primary.contrast};
-//   width: auto;
-//   height: 54px;
-//   padding-top: 10px;
-//   padding-bottom: 10px;
 
-//   @media (min-width: 748px) {
 
-//   }
+const StyledHeader = styled.header`
+  background-color: ${props => props.theme.colors.background.main};
+  color: ${props => props.theme.colors.text.primary};
+  width: auto;
+  height: 34px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-//   @media (min-width: 992px) {
-//     height: 80px;
-//     padding-top: 20px;
-//     padding-bottom: 20px;
-//   }
-// `
+  @media (min-width: 748px) {
 
-// StyledHeader.defaultProps = {
-//   theme: {
-//     colors: {
-//       primary: {
-//         contrast: "red"
-//       },
-//       background: {
-//         main: "black"
-//       }
-//     },
-//   }
-// }
+  }
+
+  @media (min-width: 992px) {
+    height: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+`
 
 const StyledHeaderContainer = styled.div`
   height: auto;
@@ -78,14 +67,15 @@ const StyledSubtitle = styled.div`
 
 const StyledImageContainer = styled.div`
   height: 27px;
+  width: 90px;
   margin-left: 14px;
 
   @media (min-width: 992px) {
     height: 40px;
+    width: 133px;
   }
 `
-const Header = () => {
-  
+const Header = (props) => {
 
   return (
     <StyledHeader>
@@ -94,7 +84,7 @@ const Header = () => {
         <StyledSubtitle>
           for
           <StyledImageContainer>
-            <StaticImage src="../images/Spotify_Logo_RGB_White.png" alt="Spotify Logo" placeholder="blurred" height={40}/>
+            <StaticImage src="../images/Spotify_Logo_RGB_White.png" alt="Spotify Logo" placeholder="blurred" layout="constrained" size="(min-width: 992px) 133px, 90px" />
           </StyledImageContainer>
         </StyledSubtitle>
       </StyledHeaderContainer>
@@ -102,4 +92,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default withTheme(Header);
