@@ -1,11 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components';
+import { OutboundLink } from 'gatsby-plugin-google-gtag'
 
 const StyledHero = styled.main`
   font-family: "GothamSSm-Bold";
   background-color: ${props => props.theme.colors.hero.secondary};
   color: ${props => props.theme.colors.hero.primary};
-  height: 100vh;
+  height: 95vh;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -73,7 +74,7 @@ const StyledHeroSubtitle = styled.p`
   
 `
 
- const StyledHeroButton = styled.button`
+ const StyledHeroButton = styled(OutboundLink)`
   font-family: "GothamSSm-Medium";
   font-size: 14px;
   text-transform: uppercase;
@@ -99,7 +100,7 @@ const Hero = () => {
     <StyledHero>
       <StyledHeroTitle>Premium Blends</StyledHeroTitle>
       <StyledHeroSubtitle>Genuinely random shuffle. No weighted algorithm.</StyledHeroSubtitle>
-      <StyledHeroButton as="a" href="https://accounts.spotify.com/authorize?client_id=b33c429d1d5b4a5bb647ba81eab0b21e&redirect_uri=https:%2F%2Fcarlton.dev%2Fshuffleforspotify&scope=user-library-read%20playlist-read-private%20user-read-playback-state%20user-modify-playback-state&response_type=token&state=123">Try it out</StyledHeroButton>
+      <StyledHeroButton href="https://accounts.spotify.com/authorize?client_id=b33c429d1d5b4a5bb647ba81eab0b21e&redirect_uri=https:%2F%2Fcarlton.dev%2Fshuffleforspotify&scope=user-library-read%20playlist-read-private%20user-read-playback-state%20user-modify-playback-state&response_type=token&state=123">Try it out</StyledHeroButton>
     </StyledHero>
   )
 }
