@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import reset from 'styled-reset';
 import Seo from '../components/seo.js';
@@ -48,17 +47,6 @@ const Layout = ({
   path = false,
   props,
 }) => {
-  const data = useStaticQuery(graphql`
-    query GetSiteTitle {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
-  const meta = data?.site?.siteMetadata;
 
   return (
     <>
