@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
 
@@ -14,13 +14,11 @@ margin: 20
 748 max width of header elements
 */
 
-
-
 const StyledHeader = styled.header`
   font-family: "GothamSSm-Bold";
   line-height: 1.5;
-  background-color: ${props => props.theme.colors.background.main};
-  color: ${props => props.theme.colors.text.primary};
+  background-color: ${(props) => props.theme.colors.background.main};
+  color: ${(props) => props.theme.colors.text.primary};
   width: auto;
   height: 34px;
   padding-top: 10px;
@@ -38,7 +36,7 @@ const StyledHeader = styled.header`
     padding-top: 20px;
     padding-bottom: 20px;
   }
-`
+`;
 
 const StyledHeaderContainer = styled.div`
   height: auto;
@@ -57,7 +55,7 @@ const StyledHeaderContainer = styled.div`
     max-width: 1170px;
     width: 1170px;
   }
-`
+`;
 
 const StyledTitle = styled.div`
   font-size: 24px;
@@ -65,7 +63,7 @@ const StyledTitle = styled.div`
   @media (min-width: 992px) {
     font-size: 36px;
   }
-`
+`;
 
 const StyledSubtitle = styled.div`
   display: grid;
@@ -77,7 +75,7 @@ const StyledSubtitle = styled.div`
   @media (min-width: 992px) {
     font-size: 18px;
   }
-`
+`;
 
 const StyledImageContainer = styled.div`
   height: 27px;
@@ -89,22 +87,19 @@ const StyledImageContainer = styled.div`
     width: 133px;
     margin-left: 20px;
   }
-`
-const Header = (props) => {
-
-  return (
-    <StyledHeader>
-      <StyledHeaderContainer>
-        <StyledTitle>Shuffle</StyledTitle>
-        <StyledSubtitle>
-          for
-          <StyledImageContainer>
-            <StaticImage src="../images/Spotify_Logo_RGB_White.png" alt="Spotify Logo" placeholder="blurred" layout="constrained" size="(min-width: 992px) 133px, 90px" />
-          </StyledImageContainer>
-        </StyledSubtitle>
-      </StyledHeaderContainer>
-    </StyledHeader>
-  )
-}
+`;
+const Header = (props) => (
+  <StyledHeader>
+    <StyledHeaderContainer>
+      <StyledTitle>Shuffle</StyledTitle>
+      <StyledSubtitle>
+        for
+        <StyledImageContainer>
+          <StaticImage src="../images/Spotify_Logo_RGB_White.png" alt="Spotify Logo" placeholder="blurred" layout="constrained" size="(min-width: 992px) 133px, 90px" />
+        </StyledImageContainer>
+      </StyledSubtitle>
+    </StyledHeaderContainer>
+  </StyledHeader>
+);
 
 export default Header;
