@@ -98,7 +98,7 @@ const Hero = () => {
     <StyledHero>
       <StyledHeroTitle>Premium Blends</StyledHeroTitle>
       <StyledHeroSubtitle>Genuinely random shuffle. No weighted algorithm.</StyledHeroSubtitle>
-      <StyledHeroButton>Try it out</StyledHeroButton>
+      <StyledHeroButton as="a" href="https://accounts.spotify.com/authorize?client_id=b33c429d1d5b4a5bb647ba81eab0b21e&redirect_uri=https:%2F%2Fcarlton.dev%2Fshuffleforspotify&scope=user-library-read%20playlist-read-private%20user-read-playback-state%20user-modify-playback-state&response_type=token&state=123">Try it out</StyledHeroButton>
     </StyledHero>
   )
 }
