@@ -88,7 +88,7 @@ const StyledImageContainer = styled.div`
     margin-left: 20px;
   }
 `;
-const Header = (props) => (
+const Header = () => (
   <StyledHeader>
     <StyledHeaderContainer>
       <StyledTitle>Shuffle</StyledTitle>
