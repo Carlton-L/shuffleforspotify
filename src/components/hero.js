@@ -16,19 +16,19 @@ const StyledHero = styled.main`
   overflow-y: hidden;
   -webkit-box-align: center;
   -webkit-box-pack: center;
-  background-image: url('https://res.cloudinary.com/carlton-dev/image/upload/v1634588509/Shuffle-for-Spotify/Hero-bg_lwqk3a.svg');
-  background-size: 300%;
+  background-image: url('https://res.cloudinary.com/carlton-dev/image/upload/v1634621063/Shuffle-for-Spotify/Hero-bg-mobile_sfvzsg.svg');
+  background-size: 250%;
   background-position-x: 60%;
-  background-position-y: 30%;
+  background-position-y: 0%;
   -webkit-box-pack: center;
   justify-content: center;
 
   @media (min-width: 480px) {
     height: 100vh;
-    background-image: url('https://res.cloudinary.com/carlton-dev/image/upload/v1634588509/Shuffle-for-Spotify/Hero-bg_lwqk3a.svg');
-    background-size: 250%;
-    background-position-x: 66%;
-    background-position-y: 40%;
+    background-image: url('https://res.cloudinary.com/carlton-dev/image/upload/v1634621063/Shuffle-for-Spotify/Hero-bg-mobile_sfvzsg.svg');
+    background-size: 230%;
+    background-position-x: 55%;
+    background-position-y: 30%;
     -webkit-box-pack: center;
     justify-content: center;
   }
