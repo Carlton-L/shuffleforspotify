@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Link } from 'gatsby';
 
 /*
 Header breakpoints:
@@ -59,6 +60,8 @@ const StyledHeaderContainer = styled.div`
 
 const StyledTitle = styled.div`
   font-size: 24px;
+  color: white;
+  text-decoration: none;
 
   @media (min-width: 992px) {
     font-size: 36px;
@@ -91,7 +94,7 @@ const StyledImageContainer = styled.div`
 const Header = () => (
   <StyledHeader>
     <StyledHeaderContainer>
-      <StyledTitle>Shuffle</StyledTitle>
+      <StyledTitle as={Link} to="/" >Shuffle</StyledTitle>
       <StyledSubtitle>
         for
         <StyledImageContainer>
