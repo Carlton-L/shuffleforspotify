@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import reset from 'styled-reset'
+import reset from 'styled-reset';
 import Seo from '../components/seo.js';
-import Header from '../components/header.js'
-import Footer from '../components/footer.js'
+import Header from '../components/header.js';
+import Footer from '../components/footer.js';
 import Theme from '../themes/theme.js';
 import GothamSSmMediumttf from '../fonts/GothamSSm-Medium.woff2';
 import GothamSSmMediumwoff from '../fonts/GothamSSm-Medium.woff2';
@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-`
+`;
 
 const Layout = ({
   children,
@@ -46,8 +46,8 @@ const Layout = ({
   description = false,
   image = false,
   path = false,
-  props
-}) =>  {
+  props,
+}) => {
   const data = useStaticQuery(graphql`
     query GetSiteTitle {
       site {
@@ -56,9 +56,9 @@ const Layout = ({
         }
       }
     }
-  `)
+  `);
 
-  const meta = data?.site?.siteMetadata
+  const meta = data?.site?.siteMetadata;
 
   return (
     <>
@@ -66,11 +66,11 @@ const Layout = ({
       <Seo title={title} description={description} image={image} path={path} />
       <ThemeProvider theme={Theme}>
         <Header />
-          {children}
+        {children}
         <Footer />
       </ThemeProvider>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
