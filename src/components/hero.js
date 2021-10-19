@@ -85,6 +85,7 @@ const StyledHeroSubtitle = styled.p`
   padding-left: 32px;
   padding-right: 32px;
   border-radius: 500px;
+  text-decoration: none;
   
   &:hover {
     background-color: ${props => props.theme.colors.hero.hover};
