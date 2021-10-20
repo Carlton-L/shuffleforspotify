@@ -1,11 +1,11 @@
 import * as React from 'react';
-import Layout from '../layout/layout.js'
+import MainLayout from '../layout/mainLayout.js'
 
 const IndexPage = () => {
   return (
-    <Layout>
+    <MainLayout>
       <h1>Content Placeholder</h1>
-    </Layout>
+    </MainLayout>
   )
 }
 
