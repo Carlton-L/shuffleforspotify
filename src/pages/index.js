@@ -1,14 +1,14 @@
 import * as React from 'react';
-import Layout from '../layout/layout.js';
+import MainLayout from '../layout/mainLayout.js';
 import Hero from '../components/hero.js'
 
 const IndexPage = () => {
   return (
-    <Layout>
+    <MainLayout>
       <Hero>
         content
       </Hero>
-    </Layout>
+    </MainLayout>
   )
 }
 
