@@ -21,7 +21,7 @@ const Seo = (props) => {
   const title = props.title || defaults.title;
   const description = props.description || defaults.description;
   const image = new URL(props.image || '/carlton-dev/image/upload/v1634593368/Shuffle-for-Spotify/ShuffleForSpotify-og-01_rpa89w.jpg', defaults.image, defaults.siteUrl);
-  const url = new URL(props.path || '/', defaults.siteUrl)
+  const url = new URL(props.path || '/shuffleforspotify/', defaults.siteUrl)
 
   return (
     <Helmet>
