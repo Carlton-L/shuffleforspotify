@@ -20,7 +20,7 @@ const Seo = (props) => {
 
   const title = props.title || defaults.title;
   const description = props.description || defaults.description;
-  const image = new URL(props.image || '/', defaults.image, defaults.siteUrl);
+  const image = new URL(props.image || '/carlton-dev/image/upload/v1634593368/Shuffle-for-Spotify/ShuffleForSpotify-og-01_rpa89w.jpg', defaults.image, defaults.siteUrl);
   const url = new URL(props.path || '/', defaults.siteUrl)
 
   return (
@@ -29,6 +29,7 @@ const Seo = (props) => {
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
       {image && <meta name="image" content={image} />}
+      {console.log(image)}
 
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
