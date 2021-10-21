@@ -17,8 +17,8 @@ const MainLayout = ({
 
   return (
     <>
-      <GlobalStyle />
       <Seo title={title} description={description} image={image} path={path} />
+      <GlobalStyle />
       <ThemeProvider theme={Theme}>
         <Header />
         {children}
