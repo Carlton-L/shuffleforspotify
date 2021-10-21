@@ -13,6 +13,17 @@ const LibraryLayout = ({
   props,
 }) => {
 
-}
+  return (
+    <>
+      <GlobalStyle />
+      <Seo title={title} description={description} image={image} path={path} />
+      <ThemeProvider theme={Theme}>
+        
+        {children}
+
+      </ThemeProvider>
+    </>
+  );
+};
 
 export default LibraryLayout;
