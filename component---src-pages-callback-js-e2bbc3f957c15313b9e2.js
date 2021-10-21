@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkshuffleforspotify=self.webpackChunkshuffleforspotify||[]).push([[698],{1861:function(f,e,s){s(7294),s(3751),s(783),s(541)},9113:function(f,e,s){s.r(e);s(7294),s(1861);e.default=CollectionPage}}]);
+//# sourceMappingURL=component---src-pages-callback-js-e2bbc3f957c15313b9e2.js.map
