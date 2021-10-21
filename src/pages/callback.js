@@ -7,4 +7,4 @@ const CallbackPage = () => {
   )
 }
 
-export default CollectionPage;
+export default CallbackPage;
