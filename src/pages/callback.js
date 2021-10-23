@@ -91,7 +91,7 @@ const CallbackPage = ({ location }) => {
     <LibraryLayout>
       <ContentContainer>
         {
-          // Need to check if window exists, because without it state will be undefined, and state.name will be unavailable
+          // Need to check if window exists, because without it state will be undefined (or maybe false), and state.name will be unavailable
           `Henlo, ${typeof window === 'undefined' ? '' : state.name}`
         }
       </ContentContainer>
