@@ -20,8 +20,6 @@ const StyledHero = styled.main`
   background-size: 250%;
   background-position-x: 60%;
   background-position-y: 0%;
-  -webkit-box-pack: center;
-  justify-content: center;
 
   @media (min-width: 480px) {
     height: 100vh;
@@ -102,7 +100,7 @@ const Hero = () => {
       <StyledHeroSubtitle>
         Sort by anything, or use genuinely random shuffle. No weighted algorithm.
       </StyledHeroSubtitle>
-      <StyledHeroButton href="https://accounts.spotify.com/authorize?client_id=b33c429d1d5b4a5bb647ba81eab0b21e&redirect_uri=https:%2F%2Fcarlton.dev%2Fshuffleforspotify%2Fcollection&scope=user-library-read%20playlist-read-private%20user-read-playback-state%20user-modify-playback-state&response_type=token&state=123">
+      <StyledHeroButton href="https://accounts.spotify.com/authorize?client_id=b33c429d1d5b4a5bb647ba81eab0b21e&redirect_uri=https:%2F%2Fcarlton.dev%2Fshuffleforspotify%2Fcallback&scope=user-library-read%20playlist-read-private%20user-read-playback-state%20user-modify-playback-state%20user-read-private%20user-read-email&response_type=token&state=123">
         Try it out
       </StyledHeroButton>
     </StyledHero>
