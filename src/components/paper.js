@@ -7,7 +7,6 @@ const StyledContainer = styled.div`
     props.square ? "border-radius: 0;" : "border-radius: 4px;"
   )}
   ${(props) => {
-    console.log(props)
     const rgbColor = colorToRgb(props.color)
 
     return `background: rgba(${rgbColor.red}, ${rgbColor.green}, ${rgbColor.blue}, ${props.opacity});`
