@@ -291,5 +291,25 @@ const colorToRgb = (input) => {
       return {red: 199, green: 21, blue: 133}
     case 'MediumVioletRed':
       return {red: 199, green: 21, blue: 133}
+
+    // Hex color parsing
+    default:
+      // Check for string length
+      if (input.length > 7 || input.length < 6) { 
+        return new Error("Invalid input string, please enter a valid Web Color or a hexadecimal string (#xxxxxx)")
+      }
+
+      // Check for leading # symbol and remove it
+      if (input[0] === "#") { input.shift() }
+
+      // Convert red
+      const red = parseInt(input.slice(0, 2), 16)
+      // Convert green
+      const green = parseInt(input.slice(2, 4), 16)
+      // Convert blue
+      const green = parseInt(input.slice(4, 6), 16)
+
+      return {red, green, blue}
+      
   }
 }
