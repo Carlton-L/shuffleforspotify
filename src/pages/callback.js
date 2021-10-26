@@ -1,6 +1,7 @@
 import * as React from 'react';
 import LibraryLayout from '../layout/libraryLayout.js';
 import ContentContainer from '../components/contentContainer.js';
+import LoadingSpinner from '../components/loadingSpinner';
 import useLocalState from '../hooks/useLocalState.js';
 
 const CallbackPage = ({ location }) => {
@@ -91,8 +92,13 @@ const CallbackPage = ({ location }) => {
     <LibraryLayout>
       <ContentContainer>
         {
+          loading ? <LoadingSpinner /> : (
+            `Henlo, ${typeof window === 'undefined' ? '' : state.name}`
+          )
+        }
+        {
           // Need to check if window exists, because without it state will be undefined (or maybe false), and state.name will be unavailable
-          `Henlo, ${typeof window === 'undefined' ? '' : state.name}`
+          
         }
       </ContentContainer>
     </LibraryLayout>
