@@ -1,6 +1,5 @@
-
 // Accepts a Web Color String or Hex string (#xxxxxx) and outputs RGB values
-const colorToRgb = (input) => {
+const colorToRgb = (color) => {
   switch(color) {
     // Pink
     case 'MediumVioletRed':
@@ -295,21 +294,22 @@ const colorToRgb = (input) => {
     // Hex color parsing
     default:
       // Check for string length
-      if (input.length > 7 || input.length < 6) { 
-        return new Error("Invalid input string, please enter a valid Web Color or a hexadecimal string (#xxxxxx)")
+      if (color.length > 7 || color.length < 6) { 
+        throw new Error("Invalid color string, please enter a valid Web Color or a hexadecimal string (#xxxxxx)")
       }
 
       // Check for leading # symbol and remove it
-      if (input[0] === "#") { input.shift() }
-
+      color = color.replace("#", "")
       // Convert red
-      const red = parseInt(input.slice(0, 2), 16)
+      const red = parseInt(color.slice(0, 2), 16)
       // Convert green
-      const green = parseInt(input.slice(2, 4), 16)
+      const green = parseInt(color.slice(2, 4), 16)
       // Convert blue
-      const green = parseInt(input.slice(4, 6), 16)
+      const blue = parseInt(color.slice(4, 6), 16)
 
       return {red, green, blue}
       
   }
 }
+
+export default colorToRgb
