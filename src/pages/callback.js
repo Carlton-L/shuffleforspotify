@@ -7,7 +7,7 @@ const CallbackPage = ({ location }) => {
   const [state, setState] = useLocalState('userState', false);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
-
+  
   const fetchUser = async (token) => {
     const res = await fetch('https://api.spotify.com/v1/me', {
       method: 'GET',
