@@ -2,6 +2,7 @@ import * as React from 'react';
 import LibraryLayout from '../layout/libraryLayout.js';
 import ContentContainer from '../components/contentContainer.js';
 import LoadingSpinner from '../components/loadingSpinner';
+import Paper from '../components/paper';
 import useLocalState from '../hooks/useLocalState.js';
 
 const CallbackPage = ({ location }) => {
@@ -93,7 +94,12 @@ const CallbackPage = ({ location }) => {
       <ContentContainer>
         {
           loading ? <LoadingSpinner /> : (
-            `Henlo, ${typeof window === 'undefined' ? '' : state.name}`
+            error ? <ErrorDialog /> : (
+              <Paper>
+                Content Placeholder
+              </Paper>
+            )
+            // `Henlo, ${typeof window === 'undefined' ? '' : state.name}`
           )
         }
         {
