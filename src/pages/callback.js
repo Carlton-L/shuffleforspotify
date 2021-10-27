@@ -95,6 +95,7 @@ const CallbackPage = ({ location }) => {
         {
           loading ? <LoadingSpinner /> : (
             error ? <ErrorDialog /> : (
+              
               <Paper>
                 Content Placeholder
               </Paper>
