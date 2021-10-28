@@ -25,7 +25,7 @@ const CallbackPage = ({ location }) => {
     ).then(response => {
         console.log(response)
         return {
-          error: true,
+          error: false,
           data: response
         }
    
@@ -46,11 +46,15 @@ const CallbackPage = ({ location }) => {
     // Check to see if state object already populated (e.g. this page was navigated to using back button)
     if (!state) {
       const params = new URLSearchParams(location.hash.substr(1));
-      
+      const loginError = new URLSearchParams(location.search.substr(1))
+      console.log(params);
+      console.log(loginError.get("access_denied"))
+
       // Check for error param (present if user denied access)
-      if (params.get("error")) {
-        setError({ message: "Error: User declined permissions"});
-        setLoading(false);;
+      if (loginError.get("access_denied")) {
+        setError({ message: "User declined permissions"});
+        setLoading(false);
+        setState(false);
         return
       }
 
@@ -64,8 +68,9 @@ const CallbackPage = ({ location }) => {
       console.log(user)
 
       if (user.error) {
-        setError({ message: user.data});
+        setError(user.data.error);
         setLoading(false);
+        setState(false);
         return
       }
 
@@ -95,7 +100,7 @@ const CallbackPage = ({ location }) => {
       <ContentContainer>
         {
           loading ? <LoadingSpinner /> : (
-            error ? <ErrorDialog>{error}</ErrorDialog> : (
+            error ? <ErrorDialog>Error: <br/> {error.message}</ErrorDialog> : (
               <>
               <Paper>
                 Content Placeholder
