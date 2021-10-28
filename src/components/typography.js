@@ -1,3 +1,6 @@
+import * as React from 'react';
+import styled from 'styled-components';
+
 // Typography component
 
 /*
@@ -9,6 +12,12 @@ variant: string (body) - sets the variant
 Element type is always <span>
 */
 
-const Typography = () => {
-  
+const StyledTypography = styled.span`
+
+`
+
+const Typography = ({ children, align = 'center', variant = 'body', color = null }) => {
+  return (
+    {children}
+  )
 }
