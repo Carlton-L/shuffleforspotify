@@ -5,9 +5,7 @@ import Hero from '../components/hero.js'
 const IndexPage = () => {
   return (
     <MainLayout>
-      <Hero>
-        content
-      </Hero>
+      <Hero />
     </MainLayout>
   )
 }
