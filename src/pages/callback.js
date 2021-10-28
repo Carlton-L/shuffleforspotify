@@ -47,8 +47,6 @@ const CallbackPage = ({ location }) => {
     if (!state) {
       const params = new URLSearchParams(location.hash.substr(1));
       const loginError = new URLSearchParams(location.search.substr(1))
-      console.log(params);
-      console.log(loginError.get("access_denied"))
 
       // Check for error param (present if user denied access)
       if (loginError.get("access_denied")) {
