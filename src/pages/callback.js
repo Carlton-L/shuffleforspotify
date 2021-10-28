@@ -97,7 +97,6 @@ const CallbackPage = ({ location }) => {
           loading ? <LoadingSpinner /> : (
             error ? <ErrorDialog>{error}</ErrorDialog> : (
               <>
-              <ErrorDialog>This is an error</ErrorDialog>
               <Paper>
                 Content Placeholder
               </Paper>
