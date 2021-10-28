@@ -5,6 +5,7 @@ const StyledContainer = styled.div`
   background-color: #D41A2B;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 22px;
 `
 
@@ -14,6 +15,7 @@ const StyledContent = styled.div`
   font-size 12px;
   text-align: center;
   margin-left: 5px;
+  line-height: 15px;
 `
 
 const StyledSvg = styled.img`
