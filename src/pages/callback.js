@@ -4,6 +4,7 @@ import ContentContainer from '../components/contentContainer.js';
 import LoadingSpinner from '../components/loadingSpinner';
 import Paper from '../components/paper';
 import useLocalState from '../hooks/useLocalState.js';
+import ErrorDialog from '../components/errorDialog'
 
 const CallbackPage = ({ location }) => {
   const [state, setState] = useLocalState('userState', false);
@@ -24,7 +25,7 @@ const CallbackPage = ({ location }) => {
     ).then(response => {
         console.log(response)
         return {
-          error: false,
+          error: true,
           data: response
         }
    
@@ -94,11 +95,13 @@ const CallbackPage = ({ location }) => {
       <ContentContainer>
         {
           loading ? <LoadingSpinner /> : (
-            error ? <ErrorDialog /> : (
-              
+            error ? <ErrorDialog>{error}</ErrorDialog> : (
+              <>
+              <ErrorDialog>This is an error</ErrorDialog>
               <Paper>
                 Content Placeholder
               </Paper>
+              </>
             )
             // `Henlo, ${typeof window === 'undefined' ? '' : state.name}`
           )
