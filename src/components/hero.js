@@ -33,9 +33,9 @@ const StyledHero = styled.main`
 
   @media (min-width: 1200px) {
     background-image: url('https://res.cloudinary.com/carlton-dev/image/upload/v1634588509/Shuffle-for-Spotify/Hero-bg_lwqk3a.svg');
-    background-size: 175%;
-    background-position-x: 46%;
-    background-position-y: -10%;
+    background-size: 200%;
+    background-position-x: 61%;
+    background-position-y: 0%;
     -webkit-box-pack: center;
     justify-content: center;
     min-height: 846px;
