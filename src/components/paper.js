@@ -17,7 +17,9 @@ const StyledContainer = styled.div`
 `
 
 const StyledContent = styled.div`
-  padding: 16px 
+  margin: 40px 0px;
+  padding: 16px;
+  text-align: center;
 `
 
 /*
