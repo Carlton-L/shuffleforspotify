@@ -100,8 +100,8 @@ const CallbackPage = ({ location }) => {
           loading ? <LoadingSpinner /> : (
             error ? <ErrorDialog>Error: <br/> {error.message}</ErrorDialog> : (
               <>
+                <h2 style={{fontSize: "28px", textAlign: "left"}}>Choose a method</h2>
               <Paper>
-                Content Placeholder
               </Paper>
               </>
             )
