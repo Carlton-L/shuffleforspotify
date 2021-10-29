@@ -5,6 +5,7 @@ import LoadingSpinner from '../components/loadingSpinner';
 import Paper from '../components/paper';
 import useLocalState from '../hooks/useLocalState.js';
 import ErrorDialog from '../components/errorDialog'
+import Button from '../components/button.js';
 
 const CallbackPage = ({ location }) => {
   const [state, setState] = useLocalState('userState', false);
@@ -102,6 +103,7 @@ const CallbackPage = ({ location }) => {
               <>
                 <h2 style={{fontSize: "28px", textAlign: "left"}}>Choose a method</h2>
               <Paper>
+                <Button>Add to Queue</Button>
               </Paper>
               </>
             )
