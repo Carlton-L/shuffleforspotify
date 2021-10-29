@@ -6,6 +6,7 @@ const StyledContainer = styled.main`
   background-image: linear-gradient(#170e5b, #131313 435px);
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   -webkit-box-align: center;
