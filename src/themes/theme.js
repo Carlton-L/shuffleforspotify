@@ -18,6 +18,12 @@ const theme = {
       dark: "#18115c",
       contrastText: "#ffffff"
     },
+    white: {
+      main: "#fafafa",
+      light: "#fffff",
+      dark: "#f0f0f0",
+      contrastText: "#191414"
+    },
     background: {
       main: "#191414",
       light: "#181717",
