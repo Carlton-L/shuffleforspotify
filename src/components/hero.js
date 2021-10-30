@@ -104,7 +104,7 @@ const Hero = () => {
       <StyledHeroSubtitle>
         Sort by anything, or use genuinely random shuffle. No weighted algorithm.
       </StyledHeroSubtitle>
-      <StyledHeroButton href="https://accounts.spotify.com/authorize?client_id=b33c429d1d5b4a5bb647ba81eab0b21e&redirect_uri=http:%2F%2Flocalhost:8000%2Fcallback&scope=user-library-read%20playlist-read-private%20user-read-playback-state%20user-modify-playback-state%20user-read-private%20user-read-email&response_type=token&state=123">
+      <StyledHeroButton href={`https://accounts.spotify.com/authorize?client_id=b33c429d1d5b4a5bb647ba81eab0b21e&redirect_uri=${process.env.GATSBY_SITE_URL_ENCODED}%2Fcallback&scope=user-library-read%20playlist-read-private%20user-read-playback-state%20user-modify-playback-state%20user-read-private%20user-read-email&response_type=token&state=123`}>
         Try it out
       </StyledHeroButton>
     </StyledHero>
