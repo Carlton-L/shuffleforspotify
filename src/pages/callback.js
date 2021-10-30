@@ -103,7 +103,7 @@ const CallbackPage = ({ location }) => {
               <>
                 <h2 style={{fontSize: "28px", textAlign: "left"}}>Choose a method</h2>
               <Paper>
-                <Button>Add to Queue</Button>
+                <Button variant={state.premium ? 'filled' : 'disabled'}>Add to Queue</Button>
                 <Button color="white">Shuffle Playlist</Button>
                 --- OR ---
                 <Button color="white" variant="outline">Sort Playlist</Button>
