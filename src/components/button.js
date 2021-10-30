@@ -3,21 +3,24 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledButton = styled.button`
+  margin-left: auto;
+  margin-right: auto;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.125rem;
   padding: 12px 32px;
-  margin: 20px 0px;
+  margin-top: 20px;
+  margin-bottom: ${props => props.gutterBottom ? '20px' : '10px'};
   curson: pointer;
   border-radius: 999px;
   border-width: 2px;
   border-style: solid;
   border-color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].main : 'transparent'};
-  color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].main : (
-    props.variant === 'disabled' ? 'darkgrey' : props.theme.colors[props.color].contrastText
-  )};
   background-color: ${props => props.variant === 'filled' ? props.theme.colors[props.color].main : (
     props.variant === 'disabled' ? 'grey' : 'transparent'
+  )};
+  color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].main : (
+    props.variant === 'disabled' ? 'darkgrey' : props.theme.colors[props.color].contrastText
   )};
 
   &:hover {
@@ -26,9 +29,9 @@ const StyledButton = styled.button`
       props.variant === 'disabled' ? 'grey' : 'transparent'
     )};
     color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].light : (
-      props.variant === 'disabled' ? 'grey' : props.theme.colors[props.color].contrastText
+      props.variant === 'disabled' ? 'darkgrey' : props.theme.colors[props.color].contrastText
     )};
-    transform: scale(1.05);
+    transform: ${props => props.variant === 'disabled' ? 'scale(1)' : 'scale(1.05)'};
   }
 
   &:active {
@@ -37,27 +40,36 @@ const StyledButton = styled.button`
       props.variant === 'disabled' ? 'grey' : 'transparent'
     )};
     color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].dark : (
-      props.variant === 'disabled' ? 'grey' : props.theme.colors[props.color].contrastText
+      props.variant === 'disabled' ? 'darkgrey' : props.theme.colors[props.color].contrastText
     )};
     transform: scale(1);
   }
 
 `
 
-const Button = ({children, color, variant}) => {
+const Button = ({children, color, variant, gutterBottom}) => {
   return (
-    <StyledButton color={color} variant={variant}>{children}</StyledButton>
+    <StyledButton
+      color={color}
+      variant={variant}
+      gutterBottom={gutterBottom}
+      disabled={variant === 'disabled' ? true : false}
+    >
+      {children}
+    </StyledButton>
   )
 }
 
 Button.propTypes = {
   color: PropTypes.oneOf(['primary', 'secondary', 'white', 'black']),
-  variant: PropTypes.oneOf(['text', 'filled', 'outline', 'disabled'])
+  variant: PropTypes.oneOf(['text', 'filled', 'outline', 'disabled']),
+  gutterBottom: PropTypes.bool,
 }
 
 Button.defaultProps = {
   color: 'primary',
-  variant: 'filled'
+  variant: 'filled',
+  gutterBottom: false
 }
 
 export default Button;
