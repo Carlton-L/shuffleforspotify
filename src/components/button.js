@@ -10,32 +10,34 @@ const StyledButton = styled.button`
   border-radius: 999px;
   border-width: 2px;
   border-style: solid;
-  border-color: ${props => props.variant === 'outline' ? props.color.main : 'transparent'};
-  font-color: ${props => props.variant === 'outline' ? props.color.main : (
-    props.variant === 'disabled' ? 'darkgrey' : props.color.contrastText
+  border-color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].main : 'transparent'};
+  color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].main : (
+    props.variant === 'disabled' ? 'darkgrey' : props.theme.colors[props.color].contrastText
   )};
-  background-color: ${props => props.variant === 'filled' ? props.color.main : (
+  background-color: ${props => props.variant === 'filled' ? props.theme.colors[props.color].main : (
     props.variant === 'disabled' ? 'grey' : 'transparent'
   )};
 
-  &:active {
-    border-color: ${props => props.variant === 'outline' ? props.color.dark : 'transparent'};
-    background-color: ${props => props.variant === 'filled' ? props.color.dark : (
+  &:hover {
+    border-color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].light : 'transparent'};
+    background-color: ${props => props.variant === 'filled' ? props.theme.colors[props.color].light : (
       props.variant === 'disabled' ? 'grey' : 'transparent'
     )};
-    font-color: ${props => props.variant === 'filled' ? props.color.dark : (
-      props.variant === 'disabled' ? 'grey' : 'transparent'
+    color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].light : (
+      props.variant === 'disabled' ? 'grey' : props.theme.colors[props.color].contrastText
     )};
+    transform: scale(1.05);
   }
 
-  &:hover {
-    border-color: ${props => props.variant === 'outline' ? props.color.light : 'transparent'};
-    background-color: ${props => props.variant === 'filled' ? props.color.dark : (
+  &:active {
+    border-color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].dark : 'transparent'};
+    background-color: ${props => props.variant === 'filled' ? props.theme.colors[props.color].dark : (
       props.variant === 'disabled' ? 'grey' : 'transparent'
     )};
-    font-color: ${props => props.variant === 'filled' ? props.color.dark : (
+    color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].contrastText : (
       props.variant === 'disabled' ? 'grey' : 'transparent'
     )};
+    transform: scale(1);
   }
 `
 
