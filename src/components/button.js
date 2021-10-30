@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   padding: 12px 32px;
   margin-top: 20px;
   margin-bottom: ${props => props.gutterBottom ? '20px' : '10px'};
-  curson: pointer;
+  cursor: ${props => props.variant === 'disabled' ? 'default' : 'pointer'};
   border-radius: 999px;
   border-width: 2px;
   border-style: solid;
