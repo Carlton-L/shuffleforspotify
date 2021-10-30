@@ -10,11 +10,13 @@ const theme = {
       main: "#1db954",
       light: "#00d15c",
       dark: "#00b04f",
+      contrastText: "#ffffff"
     },
     secondary: {
       main: "#2d18ac",
       light: "2815ed",
-      dark: "#18115c"
+      dark: "#18115c",
+      contrastText: "#ffffff"
     },
     background: {
       main: "#191414",
