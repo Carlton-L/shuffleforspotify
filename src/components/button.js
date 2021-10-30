@@ -7,6 +7,8 @@ const StyledButton = styled.button`
   text-transform: uppercase;
   letter-spacing: 0.125rem;
   padding: 12px 32px;
+  margin: 20px 0px;
+  curson: pointer;
   border-radius: 999px;
   border-width: 2px;
   border-style: solid;
@@ -34,11 +36,12 @@ const StyledButton = styled.button`
     background-color: ${props => props.variant === 'filled' ? props.theme.colors[props.color].dark : (
       props.variant === 'disabled' ? 'grey' : 'transparent'
     )};
-    color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].contrastText : (
-      props.variant === 'disabled' ? 'grey' : 'transparent'
+    color: ${props => props.variant === 'outline' ? props.theme.colors[props.color].dark : (
+      props.variant === 'disabled' ? 'grey' : props.theme.colors[props.color].contrastText
     )};
     transform: scale(1);
   }
+
 `
 
 const Button = ({children, color, variant}) => {
