@@ -18,6 +18,10 @@ const StyledContainer = styled.div`
 `
 
 const StyledContent = styled.div`
+  font-family: 'GothamSSm-Book';
+  font-size: 12px;
+  letter-spacing: 0.125rem;
+  color: #B3B3B3;
   margin: 0px 20px;
   padding: 16px;
   text-align: center;
