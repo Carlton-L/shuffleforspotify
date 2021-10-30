@@ -27,6 +27,10 @@ const GlobalStyle = createGlobalStyle`
     url(${GothamSSmMediumwoff}) format('woff2'),
     url(${GothamSSmMediumttf}) format('ttf');
   }
+  * {
+    font-family: GothamSSm-Medium, sans-serif;
+    font-size: 14px;
+  }
   body {
     box-sizing: border-box;
     margin: 0;
