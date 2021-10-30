@@ -14,12 +14,15 @@ const StyledContainer = styled.div`
   color: ${props => props.theme.colors.text.primary};
   overflow: hidden;
   min-width: 275px;
+  margin: 20px;
 `
 
 const StyledContent = styled.div`
-  margin: 40px 0px;
+  margin: 0px 20px;
   padding: 16px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 `
 
 /*
