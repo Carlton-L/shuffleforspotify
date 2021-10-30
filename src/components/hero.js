@@ -93,6 +93,10 @@ const StyledHeroButton = styled(OutboundLink)`
   }
 `;
 
+/*
+http:%2F%2Flocalhost:8000%2Fcallback
+https:%2F%2Fcarlton.dev%2Fshuffleforspotify%2Fcallback
+*/
 const Hero = () => {
   return (
     <StyledHero>
