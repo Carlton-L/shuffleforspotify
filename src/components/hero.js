@@ -94,8 +94,24 @@ const StyledHeroButton = styled(OutboundLink)`
 `;
 
 /*
-http:%2F%2Flocalhost:8000%2Fcallback
-https:%2F%2Fcarlton.dev%2Fshuffleforspotify%2Fcallback
+Required API permissions:
+
+  Get current user's profile:
+    user-read-private
+    user-read-email
+
+  Get current user's playlists:
+    playlist-read-private
+
+  Get available devices:
+    user-read-playback-state
+
+  Add item to playback queue:
+    user-modify-playback-state
+
+  Get user's saved tracks:
+    user-library-read
+
 */
 const Hero = () => {
   return (
