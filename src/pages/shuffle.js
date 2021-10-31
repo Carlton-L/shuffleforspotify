@@ -8,10 +8,11 @@ import ErrorDialog from '../components/errorDialog'
 import Button from '../components/button.js';
 
 const ShufflePage = ({ location }) => {
+  console.log(location)
   return (
     <LibraryLayout>
       <ContentContainer>
-        
+
       </ContentContainer>
     </LibraryLayout>
   )
