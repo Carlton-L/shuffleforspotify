@@ -47,13 +47,14 @@ const StyledButton = styled.button`
 
 `
 
-const Button = ({children, color, variant, gutterBottom}) => {
+const Button = ({children, color, variant, gutterBottom, onClick}) => {
   return (
     <StyledButton
       color={color}
       variant={variant}
       gutterBottom={gutterBottom}
       disabled={variant === 'disabled' ? true : false}
+      onClick={onClick}
     >
       {children}
     </StyledButton>
@@ -64,12 +65,14 @@ Button.propTypes = {
   color: PropTypes.oneOf(['primary', 'secondary', 'white', 'black']),
   variant: PropTypes.oneOf(['text', 'filled', 'outline', 'disabled']),
   gutterBottom: PropTypes.bool,
+  onClick: PropTypes.func
 }
 
 Button.defaultProps = {
   color: 'primary',
   variant: 'filled',
-  gutterBottom: false
+  gutterBottom: false,
+  onClick: () => {}
 }
 
 export default Button;
