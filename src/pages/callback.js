@@ -4,12 +4,11 @@ import LibraryLayout from '../layout/libraryLayout.js';
 import ContentContainer from '../components/contentContainer.js';
 import LoadingSpinner from '../components/loadingSpinner';
 import Paper from '../components/paper';
-import useLocalState from '../hooks/useLocalState.js';
 import ErrorDialog from '../components/errorDialog'
 import Button from '../components/button.js';
 
 const CallbackPage = ({ location }) => {
-  const [state, setState] = useLocalState('userState', false);
+  const [state, setState] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   
@@ -25,12 +24,12 @@ const CallbackPage = ({ location }) => {
       return response.json()
     }
     ).then(response => {
-        console.log(response)
+      console.log(response)
         return {
-          error: false,
+          error: response.error ? true : false,
           data: response
         }
-   
+    // NOTE: I don't think this catch statement will ever fire
     }).catch(error => {
       return {
         error: true,
@@ -45,50 +44,41 @@ const CallbackPage = ({ location }) => {
     // Set loading to true
     setLoading(true);
     
-    // Check to see if state object already populated (e.g. this page was navigated to using back button)
-    if (!state) {
-      const params = new URLSearchParams(location.hash.substr(1));
-      const loginError = new URLSearchParams(location.search.substr(1))
+    const params = new URLSearchParams(location.hash.substr(1));
+    const loginError = new URLSearchParams(location.search.substr(1))
 
-      // Check for error param (present if user denied access)
-      if (loginError.get("access_denied")) {
-        setError({ message: "User declined permissions"});
-        setLoading(false);
-        setState(false);
-        return
-      }
-
-      // NOTE: Due to the absence of a state variable, it's possible a user could access this page without a valid token
-
-      const token = params.get("access_token");
-      const createdAt = Math.round(new Date() /1000);
-      const expires = params.get("expires_in");
-      
-      const user = await fetchUser(token)
-      console.log(user)
-
-      if (user.error) {
-        setError(user.data.error);
-        setLoading(false);
-        setState(false);
-        return
-      }
-
-      const premium = user.data.product === 'premium' ? true : false;
-      const name = user.data.display_name;
-
-      setState({
-        token,
-        createdAt,
-        expires,
-        premium,
-        name
-      })
-
-      // Get current timestamp
-    } else {
-      // Re-use same state object that's in localStorage
+    // Check for error param (present if user denied access)
+    if (loginError.get("access_denied")) {
+      setError({ status: '401', message: "User declined permissions"});
+      setLoading(false);
+      return
     }
+
+    // NOTE: Due to the absence of a state variable, it's possible a user could access this page without a valid token
+
+    // Get access token from url hash params
+    const token = params.get("access_token");
+    
+    // Fetch user data from Spotify API
+    const user = await fetchUser(token)
+
+    // Check for error property in API response
+    if (user.error) {
+      setError(user.data.error);
+      setLoading(false);
+      return
+    }
+
+    // Check and set user's premium status and name
+    const premium = user.data.product === 'premium' ? true : false;
+    const name = user.data.display_name;
+
+    // Set state to be passed to next page
+    setState({
+      token,
+      premium,
+      name
+    })
 
     // Set loading to false
     setLoading(false);
@@ -107,17 +97,24 @@ const CallbackPage = ({ location }) => {
                 <Button 
                   variant={state.premium ? 'filled' : 'disabled'} 
                   disabled={!state.premium}
-                >
+                  >
                   Add to Queue
                 </Button>
                 <p style={{marginBottom: '20px'}}>
-                  ADD SONGS FROM A<br/>
-                  PLAYLIST OR LIBRARY<br/>
-                  DIRECTLY TO YOUR QUEUE<br/>
-                  (300 SONG MAX)
+                  {state.premium ? (
+                    <>
+                    ADD SONGS FROM A<br/>
+                    PLAYLIST OR LIBRARY<br/>
+                    DIRECTLY TO YOUR QUEUE<br/>
+                    (300 SONG MAX)
+                    </>
+                  ) : (<>ONLY AVAILABLE WITH<br/>SPOTIFY PREMIUM</>)}
                   </p>
                 <Button
                   color="white"
+                  onClick={
+                    () => navigate("/shuffle", { state: state})
+                  }
                 >
                   Shuffle Playlist
                 </Button>
@@ -141,12 +138,7 @@ const CallbackPage = ({ location }) => {
               </Paper>
               </>
             )
-            // `Henlo, ${typeof window === 'undefined' ? '' : state.name}`
           )
-        }
-        {
-          // Need to check if window exists, because without it state will be undefined (or maybe false), and state.name will be unavailable
-          
         }
       </ContentContainer>
     </LibraryLayout>
