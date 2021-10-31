@@ -74,12 +74,14 @@ const CallbackPage = ({ location }) => {
     // Check and set user's premium status and name
     const premium = response.data.product === 'premium' ? true : false;
     const name = response.data.display_name;
+    const id = response.data.id
 
     // Set state to be passed to next page
     setState({
       token,
       premium,
-      name
+      name,
+      id
     })
 
     // Set loading to false
@@ -94,7 +96,7 @@ const CallbackPage = ({ location }) => {
           loading ? <LoadingSpinner /> : (
             error ? <ErrorDialog>Error: <br/> {error.message}</ErrorDialog> : (
               <>
-                <h2 style={{fontSize: "28px", textAlign: "left"}}>Choose a method</h2>
+                <h2 style={{fontSize: "28px"}}>Choose a method</h2>
               <Paper>
                 <Button 
                   variant={state.premium ? 'filled' : 'disabled'} 
