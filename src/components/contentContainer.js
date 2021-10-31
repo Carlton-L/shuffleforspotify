@@ -4,7 +4,9 @@ import styled from 'styled-components';
 const StyledContainer = styled.main`
   font-family: 'GothamSSm-Bold';
   background-image: linear-gradient(#170e5b, #131313 435px);
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;
