@@ -2,7 +2,7 @@ import * as React from 'react';
 import LibraryLayout from '../layout/libraryLayout.js';
 import ContentContainer from '../components/contentContainer.js';
 import LoadingSpinner from '../components/loadingSpinner';
-import Paper from '../components/paper';
+import PlaylistCard from '../components/playlistCard';
 import ErrorDialog from '../components/errorDialog'
 import Button from '../components/button.js';
 
@@ -44,7 +44,8 @@ React.useEffect(async () => {
   setLoading(true);
 
   // Fetch list of playlists for the current user
-  const response = fetchPlaylists(location.state.token)
+  const response = await fetchPlaylists(location.state.token)
+  console.log(response)
 
   // Check for error property in API response
   if (response.error) {
@@ -72,8 +73,25 @@ React.useEffect(async () => {
           loading ? <LoadingSpinner /> : (
             error ? <ErrorDialog>Error: <br/> {error.message}</ErrorDialog> : (
               <>
-                <h2 style={{fontSize: "28px", textAlign: "left"}}>Select a playlist</h2>
-                
+                <h2 style={{fontSize: "28px", marginBottom: '12px'}}>Select a playlist</h2>
+                <table>
+                {
+                  playlists.items.map((item) => {
+                    console.log(item)
+                    return (
+                      // Check to see if the user owns the current playlist
+                      <PlaylistCard image={item.images.length === 3 ? item.images[1].url : item.images[0].url} disabled={item.owner.id === location.state.id ? false : true} key={item.id}>
+                        <p style={{marginBottom:'4px', fontFamily: 'GothamSSm-Book', fontSize: '18px'}}>
+                          {item.name}
+                        </p>
+                        <p style={{color: '#919496', fontFamily: 'GothamSSm-Book', fontSize: '12px'}}>
+                          {item.tracks.total} Songs
+                        </p>
+                      </PlaylistCard>
+                    )
+                  })
+                }
+                </table>
               </>
             )
           )
