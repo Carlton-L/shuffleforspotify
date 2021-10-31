@@ -12,6 +12,7 @@ const CallbackPage = ({ location }) => {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   
+  // Fetch user data from a given Sotify API token
   const fetchUser = async (token) => {
     const res = await fetch('https://api.spotify.com/v1/me', {
       method: 'GET',
@@ -44,11 +45,12 @@ const CallbackPage = ({ location }) => {
     // Set loading to true
     setLoading(true);
     
+    // Get params from hash and query params (if present)
     const params = new URLSearchParams(location.hash.substr(1));
     const loginError = new URLSearchParams(location.search.substr(1))
 
     // Check for error param (present if user denied access)
-    if (loginError.get("access_denied")) {
+    if (loginError.get("error")) {
       setError({ status: '401', message: "User declined permissions"});
       setLoading(false);
       return
@@ -97,7 +99,7 @@ const CallbackPage = ({ location }) => {
                 <Button 
                   variant={state.premium ? 'filled' : 'disabled'} 
                   disabled={!state.premium}
-                  >
+                >
                   Add to Queue
                 </Button>
                 <p style={{marginBottom: '20px'}}>
