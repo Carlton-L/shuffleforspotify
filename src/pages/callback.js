@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { navigate } from 'gatsby';
 import LibraryLayout from '../layout/libraryLayout.js';
 import ContentContainer from '../components/contentContainer.js';
 import LoadingSpinner from '../components/loadingSpinner';
@@ -103,21 +104,35 @@ const CallbackPage = ({ location }) => {
               <>
                 <h2 style={{fontSize: "28px", textAlign: "left"}}>Choose a method</h2>
               <Paper>
-                <Button variant={state.premium ? 'filled' : 'disabled'} disabled={!state.premium}>Add to Queue</Button>
+                <Button 
+                  variant={state.premium ? 'filled' : 'disabled'} 
+                  disabled={!state.premium}
+                >
+                  Add to Queue
+                </Button>
                 <p style={{marginBottom: '20px'}}>
                   ADD SONGS FROM A<br/>
                   PLAYLIST OR LIBRARY<br/>
                   DIRECTLY TO YOUR QUEUE<br/>
                   (300 SONG MAX)
                   </p>
-                <Button color="white">Shuffle Playlist</Button>
+                <Button
+                  color="white"
+                >
+                  Shuffle Playlist
+                </Button>
                 <p style={{marginBottom: '20px'}}>
                   SHUFFLE A PLAYLIST<br/>
                   IN PLACE<br/>
                   (FOR LONGER PLAYLISTS)
                   </p>
                 <p style={{margin: '20px'}}>--- OR ---</p>
-                <Button color="white" variant="disabled">Sort Playlist</Button>
+                <Button
+                  color="white"
+                  variant="disabled"
+                >
+                  Sort Playlist
+                </Button>
                 <p style={{marginBottom: '20px'}}>
                   SORT A PLAYLIST USING<br/>
                   A VARIETY OF FILTERS<br/>
