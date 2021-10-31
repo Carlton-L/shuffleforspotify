@@ -62,18 +62,18 @@ const CallbackPage = ({ location }) => {
     const token = params.get("access_token");
     
     // Fetch user data from Spotify API
-    const user = await fetchUser(token)
+    const response = await fetchUser(token)
 
     // Check for error property in API response
-    if (user.error) {
-      setError(user.data.error);
+    if (response.error) {
+      setError(response.data.error);
       setLoading(false);
       return
     }
 
     // Check and set user's premium status and name
-    const premium = user.data.product === 'premium' ? true : false;
-    const name = user.data.display_name;
+    const premium = response.data.product === 'premium' ? true : false;
+    const name = response.data.display_name;
 
     // Set state to be passed to next page
     setState({
