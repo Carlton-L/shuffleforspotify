@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { navigate } from 'gatsby';
+import { motion } from 'framer-motion';
 import LibraryLayout from '../layout/libraryLayout.js';
 import ContentContainer from '../components/contentContainer.js';
 import LoadingSpinner from '../components/loadingSpinner';
@@ -95,8 +96,27 @@ const CallbackPage = ({ location }) => {
         {
           loading ? <LoadingSpinner /> : (
             error ? <ErrorDialog>Error: <br/> {error.message}</ErrorDialog> : (
-              <>
-                <h2 style={{fontSize: "28px"}}>Choose a method</h2>
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  x: -200
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0
+                }}
+                exit={{
+                  opacity: 0,
+                  x: 200
+                }}
+                transition={{
+                  type: "spring",
+                  mass: 0.35,
+                  stiffness: 75,
+                  duration: 0.3
+                }}
+              >
+                <h2 style={{fontSize: "28px", marginLeft: '20px'}}>Choose a method</h2>
               <Paper>
                 <Button 
                   variant={state.premium ? 'filled' : 'disabled'} 
@@ -140,7 +160,7 @@ const CallbackPage = ({ location }) => {
                   (COMING SOON!)<br/>
                   </p>
               </Paper>
-              </>
+              </motion.div>
             )
           )
         }

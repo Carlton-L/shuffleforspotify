@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { navigate } from 'gatsby';
+import { motion } from 'framer-motion';
 import LibraryLayout from '../layout/libraryLayout.js';
 import ContentContainer from '../components/contentContainer.js';
 import LoadingSpinner from '../components/loadingSpinner';
@@ -10,8 +12,6 @@ const ShufflePage = ({ location }) => {
   const [playlists, setPlaylists] = React.useState({})
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
-
-  console.log(location)
 
   const fetchPlaylists = async (token) => {
     const res = await fetch('https://api.spotify.com/v1/me/playlists', {
@@ -39,32 +39,42 @@ const ShufflePage = ({ location }) => {
     return res
   }
 
-React.useEffect(async () => {
-  // Set loading to true
-  setLoading(true);
+  React.useEffect(async () => {
+    // Set loading to true
+    setLoading(true);
 
-  // Fetch list of playlists for the current user
-  const response = await fetchPlaylists(location.state.token)
-  console.log(response)
+    // Check for state (state will be null if user navigates to this page directly)
+    if (!location.state) {
+      navigate('/')
+      return
+    }
 
-  // Check for error property in API response
-  if (response.error) {
-    setError(response.data.error);
+    // Fetch list of playlists for the current user
+    const response = await fetchPlaylists(location.state.token)
+    console.log(response)
+
+    // Check for error property in API response
+    if (response.error) {
+      setError(response.data.error);
+      setLoading(false);
+      return
+    }
+
+    // TODO: I think there's a better way to set these using destructuring
+    setPlaylists({
+      offset: response.data.offset,
+      limit: response.data.limit,
+      items: response.data.items,
+      total: response.data.total
+    })
+
     setLoading(false);
-    return
+
+  }, [])
+
+  const handleSelected = (item) => {
+    setPlaylists({...playlists, items: playlists.items.filter(element => element.id === item.id)})
   }
-
-  // TODO: I think there's a better way to set these using destructuring
-  setPlaylists({
-    offset: response.data.offset,
-    limit: response.data.limit,
-    items: response.data.items,
-    total: response.data.total
-  })
-
-  setLoading(false);
-
-}, [])
 
   return (
     <LibraryLayout>
@@ -72,17 +82,45 @@ React.useEffect(async () => {
         {
           loading ? <LoadingSpinner /> : (
             error ? <ErrorDialog>Error: <br/> {error.message}</ErrorDialog> : (
-              <>
-                <h2 style={{fontSize: "28px", marginBottom: '12px'}}>Select a playlist</h2>
-                <table>
+              <div>
+                <motion.h2 
+                  style={{fontSize: "28px"}}
+                  initial={{
+                    opacity: 0,
+                    x: -200
+                  }} 
+                  animate={{
+                    opacity: 1,
+                    x: 0
+                  }}
+                  exit={{
+                    opacity: 0,
+                    x: 200
+                  }}
+                  transition={{
+                    type: "spring",
+                    mass: 0.35,
+                    stiffness: 75,
+                    duration: 0.3
+                  }}
+                >
+                  Select a playlist
+                </motion.h2>
+                <table style={{borderCollapse: 'collapse'}}>
                 {
                   playlists.items.map((item) => {
-                    console.log(item)
                     return (
                       // Check to see if the user owns the current playlist
-                      <PlaylistCard image={item.images.length === 3 ? item.images[1].url : item.images[0].url} disabled={item.owner.id === location.state.id ? false : true} key={item.id}>
+                        <PlaylistCard 
+                        image={item.images.length === 3 ? item.images[1].url : item.images[0].url} 
+                        disabled={item.owner.id === location.state.id ? false : true} 
+                        key={item.id}
+                        id={item.id}
+                        onClick={handleSelected}
+                        item={item}
+                        >
                         <p style={{marginBottom:'4px', fontFamily: 'GothamSSm-Book', fontSize: '18px'}}>
-                          {item.name}
+                        {item.name}
                         </p>
                         <p style={{color: '#919496', fontFamily: 'GothamSSm-Book', fontSize: '12px'}}>
                           {item.tracks.total} Songs
@@ -92,7 +130,7 @@ React.useEffect(async () => {
                   })
                 }
                 </table>
-              </>
+              </div>
             )
           )
         }
@@ -102,3 +140,10 @@ React.useEffect(async () => {
 }
 
 export default ShufflePage;
+
+/*
+If an element gets selected
+selectedElement goes form null to string
+when that happens, check string against item.id
+if string does not match, 
+*/
