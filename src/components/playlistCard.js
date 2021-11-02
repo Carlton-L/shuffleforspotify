@@ -3,26 +3,26 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
-const StyledContainer = styled(motion.tbody)`
+const StyledContainer = styled(motion.div)`
   width: 325px;
   height: 80px;
   display: table;
   justify-content: flex-start;
   border-radius: 4px;
   padding: 0px;
-  overflow: hidden;
-  margin: 16px 0;
+
+  margin: 8px 0;
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   color: ${props => (props.disabled ? '#919496' : 'inherit')};
   }
 `
 
-const StyledImageFrame = styled.td`
+const StyledImageFrame = styled.div`
   width: 80px;
-  height: 80px;
+  height: 100%;
   object-fit: contain;
   display: table-cell;
-  overflow: hidden;
+
   border-radius: 4px 0 0 4px;
 `
   
@@ -30,12 +30,12 @@ const StyledImage = styled.img`
   object-fit: contain;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+
   opacity: ${props => (props.disabled ? '0.5' : '1')};
   font-family: Arial, sans-serif;
 `
 
-const StyledContent = styled.td`
+const StyledContent = styled.div`
   width: auto;
   height: 100%;
   margin: auto;
@@ -48,11 +48,18 @@ const StyledContent = styled.td`
 `
 
 const PlaylistCard = ({children, image, onClick, disabled, loaded, item}) => {
+  const [selected, setSelected] = React.useState(false);
+
   return (
     <StyledContainer 
-      onClick={disabled ? () => {} : () => onClick(item)} 
+      layout
+      onClick={disabled ? () => {} : () => {
+        setSelected(true);
+        onClick(item);
+      }} 
       disabled={disabled} 
       loaded={loaded}
+      custom={selected}
       initial={{
         opacity: 0,
         x: -200
@@ -60,11 +67,9 @@ const PlaylistCard = ({children, image, onClick, disabled, loaded, item}) => {
       animate={{
         opacity: 1,
         x: 0,
-        scale: 1,
       }}
       exit={{
         opacity: 0,
-        x: 200
       }}
       transition={{
         type: "spring",
@@ -73,12 +78,10 @@ const PlaylistCard = ({children, image, onClick, disabled, loaded, item}) => {
         duration: 0.3
       }}
     >
-      <tr>
         <StyledImageFrame>
           <StyledImage src={image} alt="playlist image" disabled={disabled} />
         </StyledImageFrame>
         <StyledContent>{children}</StyledContent>
-      </tr>
     </StyledContainer>
   )
 }

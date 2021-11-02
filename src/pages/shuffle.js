@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { navigate } from 'gatsby';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import LibraryLayout from '../layout/libraryLayout.js';
 import ContentContainer from '../components/contentContainer.js';
 import LoadingSpinner from '../components/loadingSpinner';
@@ -83,8 +83,10 @@ const ShufflePage = ({ location }) => {
           loading ? <LoadingSpinner /> : (
             error ? <ErrorDialog>Error: <br/> {error.message}</ErrorDialog> : (
               <div>
+                  <AnimatePresence>
                 <motion.h2 
-                  style={{fontSize: "28px"}}
+                  style={{fontSize: "28px", marginBottom: "16px" }}
+                  layout
                   initial={{
                     opacity: 0,
                     x: -200
@@ -106,19 +108,18 @@ const ShufflePage = ({ location }) => {
                 >
                   Select a playlist
                 </motion.h2>
-                <table style={{borderCollapse: 'collapse'}}>
                 {
                   playlists.items.map((item) => {
                     return (
                       // Check to see if the user owns the current playlist
-                        <PlaylistCard 
+                      <PlaylistCard 
                         image={item.images.length === 3 ? item.images[1].url : item.images[0].url} 
                         disabled={item.owner.id === location.state.id ? false : true} 
                         key={item.id}
                         id={item.id}
                         onClick={handleSelected}
                         item={item}
-                        >
+                      >
                         <p style={{marginBottom:'4px', fontFamily: 'GothamSSm-Book', fontSize: '18px'}}>
                         {item.name}
                         </p>
@@ -129,8 +130,41 @@ const ShufflePage = ({ location }) => {
                     )
                   })
                 }
-                </table>
-              </div>
+                <motion.div
+                  layout
+                  style={{display: 'flex', alignItems: 'center'}}
+                  layout
+                  initial={{
+                    opacity: 0,
+                    x: -200
+                  }} 
+                  animate={{
+                    opacity: 1,
+                    x: 0
+                  }}
+                  exit={{
+                    opacity: 0,
+                    x: 200
+                  }}
+                  transition={{
+                    type: "spring",
+                    mass: 0.35,
+                    stiffness: 75,
+                    duration: 0.3
+                  }}
+                >
+                {
+
+                }
+                <Button
+                  color="white"
+                  variant={playlists.items.length === 1 ? "outline" : "disabled"}
+                  >
+                  SHUFFLE
+                </Button>
+                  </motion.div>
+                </AnimatePresence>
+                </div>
             )
           )
         }
