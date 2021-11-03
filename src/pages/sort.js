@@ -51,7 +51,6 @@ const SortPage = ({ location }) => {
 
     // Fetch list of playlists for the current user
     const response = await fetchPlaylists(location.state.token)
-    console.log(response)
 
     // Check for error property in API response
     if (response.error) {

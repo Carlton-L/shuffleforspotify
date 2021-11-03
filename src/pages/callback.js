@@ -26,7 +26,6 @@ const CallbackPage = ({ location }) => {
       return response.json()
     }
     ).then(response => {
-      console.log(response)
         return {
           error: response.error ? true : false,
           data: response
