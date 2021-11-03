@@ -12,6 +12,7 @@ const ShufflePage = ({ location }) => {
   const [playlists, setPlaylists] = React.useState({})
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
+  const [selected, setSelected] = React.useState(null)
 
   const fetchPlaylists = async (token) => {
     const res = await fetch('https://api.spotify.com/v1/me/playlists', {
@@ -72,12 +73,12 @@ const ShufflePage = ({ location }) => {
 
   }, [])
 
-  const handleSelected = (item) => {
-    setPlaylists({...playlists, items: playlists.items.filter(element => element.id === item.id)})
-  }
-
   return (
     <LibraryLayout>
+      {
+        // ContentContainer height snaps to smaller size when a playlist is selected.
+        // TODO: Add transition effect to the height proeprty of ContentContainer
+      }
       <ContentContainer>
         {
           loading ? <LoadingSpinner /> : (
@@ -112,12 +113,13 @@ const ShufflePage = ({ location }) => {
                   playlists.items.map((item) => {
                     return (
                       // Check to see if the user owns the current playlist
+                      <>
                       <PlaylistCard 
                         image={item.images.length === 3 ? item.images[1].url : item.images[0].url} 
                         disabled={item.owner.id === location.state.id ? false : true} 
                         key={item.id}
                         id={item.id}
-                        onClick={handleSelected}
+                        onClick={() => setSelected(item.id)}
                         item={item}
                       >
                         <p style={{marginBottom:'4px', fontFamily: 'GothamSSm-Book', fontSize: '18px'}}>
@@ -127,6 +129,31 @@ const ShufflePage = ({ location }) => {
                           {item.tracks.total} Songs
                         </p>
                       </PlaylistCard>
+                      { selected === item.id && (
+                        <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                          <Button
+                            onClick={() => navigate('/shuffleprogress')}
+                            initial={{
+                              opacity: 0,
+                              scale: 0
+                            }} 
+                            animate={{
+                              opacity: 1,
+                              scale: 1
+                            }}
+                            exit={{
+                              opacity: 0,
+                            }}
+                            transition={{
+                              type: "spring",
+                              mass: 0.35,
+                              stiffness: 75,
+                              duration: 0.3
+                            }}
+                            >SHUFFLE {item.tracks.total} SONG{item.tracks.total > 1 && "S"}</Button>
+                        </div>
+                      )}
+                      </>
                     )
                   })
                 }
@@ -153,15 +180,29 @@ const ShufflePage = ({ location }) => {
                     duration: 0.3
                   }}
                 >
-                {
-
+                  { playlists.items < playlists.total && (
+                    <Button
+                      color="primary"
+                      variant="outline"
+                      animate={{
+                        opacity: 1,
+                        x: 0
+                      }}
+                      exit={{
+                        opacity: 0,
+                        x: 200
+                      }}
+                      transition={{
+                        type: "spring",
+                        mass: 0.35,
+                        stiffness: 75,
+                        duration: 0.3
+                      }}
+                      >
+                      LOAD MORE
+                    </Button>
+                  )
                 }
-                <Button
-                  color="white"
-                  variant={playlists.items.length === 1 ? "outline" : "disabled"}
-                  >
-                  SHUFFLE
-                </Button>
                   </motion.div>
                 </AnimatePresence>
                 </div>
@@ -174,10 +215,3 @@ const ShufflePage = ({ location }) => {
 }
 
 export default ShufflePage;
-
-/*
-If an element gets selected
-selectedElement goes form null to string
-when that happens, check string against item.id
-if string does not match, 
-*/

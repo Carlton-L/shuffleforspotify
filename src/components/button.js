@@ -1,15 +1,16 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
-const StyledButton = styled.button`
+const StyledButton = styled(motion.button)`
   margin-left: auto;
   margin-right: auto;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.125rem;
   padding: 12px 32px;
-  margin-top: 20px;
+  margin-top: ${props => props.gutterTop ? '20px' : '0px'};
   margin-bottom: ${props => props.gutterBottom ? '20px' : '10px'};
   cursor: ${props => props.variant === 'disabled' ? 'default' : 'pointer'};
   border-radius: 999px;
@@ -47,14 +48,25 @@ const StyledButton = styled.button`
 
 `
 
-const Button = ({children, color, variant, gutterBottom, onClick}) => {
+const Button = ({children, color, variant, gutterBottom, gutterTop, onClick, initial, animate, exit, transition}) => {
   return (
     <StyledButton
       color={color}
       variant={variant}
       gutterBottom={gutterBottom}
+      gutterTop={gutterTop}
       disabled={variant === 'disabled' ? true : false}
       onClick={onClick}
+      initial={initial}
+      animate={animate}
+      exit={exit}
+      transition={transition}
+      whileHover={variant === "disabled" ? {
+        scale: 1
+      } : {
+         scale: 1.05,
+         transition: { duration: 0 }
+       }}
     >
       {children}
     </StyledButton>

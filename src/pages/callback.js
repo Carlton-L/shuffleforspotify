@@ -119,6 +119,7 @@ const CallbackPage = ({ location }) => {
                 <h2 style={{fontSize: "28px", marginLeft: '20px'}}>Choose a method</h2>
               <Paper>
                 <Button 
+                  gutterTop
                   variant={state.premium ? 'filled' : 'disabled'} 
                   disabled={!state.premium}
                 >
@@ -135,6 +136,7 @@ const CallbackPage = ({ location }) => {
                   ) : (<>ONLY AVAILABLE WITH<br/>SPOTIFY PREMIUM</>)}
                   </p>
                 <Button
+                  gutterTop
                   color="white"
                   onClick={
                     () => navigate("/shuffle", { state: state})
@@ -149,6 +151,7 @@ const CallbackPage = ({ location }) => {
                   </p>
                 <p style={{margin: '20px'}}>--- OR ---</p>
                 <Button
+                  gutterTop
                   color="white"
                   variant="disabled"
                 >

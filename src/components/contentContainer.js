@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 const StyledContainer = styled.main`
   font-family: 'GothamSSm-Bold';

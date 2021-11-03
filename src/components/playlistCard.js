@@ -10,27 +10,27 @@ const StyledContainer = styled(motion.div)`
   justify-content: flex-start;
   border-radius: 4px;
   padding: 0px;
-
+  overflow: hidden;
   margin: 8px 0;
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   color: ${props => (props.disabled ? '#919496' : 'inherit')};
-  }
+}
 `
 
 const StyledImageFrame = styled.div`
   width: 80px;
-  height: 100%;
+  height: 80px;
   object-fit: contain;
   display: table-cell;
-
+  overflow: hidden;
   border-radius: 4px 0 0 4px;
-`
+  `
   
-const StyledImage = styled.img`
+  const StyledImage = styled.img`
   object-fit: contain;
   height: 100%;
   width: 100%;
-
+  overflow: hidden;
   opacity: ${props => (props.disabled ? '0.5' : '1')};
   font-family: Arial, sans-serif;
 `
