@@ -10,8 +10,8 @@ const StyledButton = styled(motion.button)`
   text-transform: uppercase;
   letter-spacing: 0.125rem;
   padding: 12px 32px;
-  margin-top: ${props => props.gutterTop ? '20px' : '0px'};
-  margin-bottom: ${props => props.gutterBottom ? '20px' : '10px'};
+  margin-top: ${props => props.guttertop > 0 ? '20px' : '0px'};
+  margin-bottom: ${props => props.guttertottom > 0 ? '20px' : '10px'};
   cursor: ${props => props.variant === 'disabled' ? 'default' : 'pointer'};
   border-radius: 999px;
   border-width: 2px;
@@ -48,17 +48,19 @@ const StyledButton = styled(motion.button)`
 
 `
 
+// Props cannot be camelCase (e.g. gutterBottom, gutterTop in this component)
+// Props cannot be boolean, or else React will throw an error
 const Button = ({children, color, variant, gutterBottom, gutterTop, onClick, initial, animate, exit, transition}) => {
   return (
     <StyledButton
       color={color}
       variant={variant}
-      gutterBottom={gutterBottom}
-      gutterTop={gutterTop}
       disabled={variant === 'disabled' ? true : false}
       onClick={onClick}
       initial={initial}
       animate={animate}
+      gutterbottom={gutterBottom ? 1 : 0}
+      guttertop={gutterTop ? 1 : 0}
       exit={exit}
       transition={transition}
       whileHover={variant === "disabled" ? {
@@ -76,14 +78,16 @@ const Button = ({children, color, variant, gutterBottom, gutterTop, onClick, ini
 Button.propTypes = {
   color: PropTypes.oneOf(['primary', 'secondary', 'white', 'black']),
   variant: PropTypes.oneOf(['text', 'filled', 'outline', 'disabled']),
-  gutterBottom: PropTypes.bool,
+  guttertBottom: PropTypes.bool,
+  gutterTop: PropTypes.bool,
   onClick: PropTypes.func
 }
 
 Button.defaultProps = {
   color: 'primary',
   variant: 'filled',
-  gutterBottom: false,
+  gutterTop: false,
+  guttertBottom: false,
   onClick: () => {}
 }
 
