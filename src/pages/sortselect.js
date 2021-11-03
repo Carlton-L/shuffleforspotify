@@ -3,7 +3,9 @@ import * as React from 'react';
 const SortSelectPage = () => {
   return (
     <div>
-      Stuff
+      Content Placeholder
     </div>
   )
 }
+
+export default SortSelectPage
