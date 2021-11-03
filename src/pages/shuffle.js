@@ -129,24 +129,25 @@ const ShufflePage = ({ location }) => {
                           { selected === item.id && (
                             <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
                               <Button
-                              onClick={() => navigate('/shuffleprogress', {state: item})}
-                              initial={{
-                                opacity: 0,
-                                scale: 0
-                              }} 
-                              animate={{
-                                opacity: 1,
-                                scale: 1
-                              }}
-                              exit={{
-                                opacity: 0,
-                              }}
-                              transition={{
-                                type: "spring",
-                                mass: 0.35,
-                                stiffness: 75,
-                                duration: 0.3
-                              }}
+                                onClick={() => navigate('/shuffleprogress', {state: item, replace: true})}
+                                color="primary"
+                                initial={{
+                                  opacity: 0,
+                                  scale: 0
+                                }} 
+                                animate={{
+                                  opacity: 1,
+                                  scale: 1
+                                }}
+                                exit={{
+                                  opacity: 0,
+                                }}
+                                transition={{
+                                  type: "spring",
+                                  mass: 0.35,
+                                  stiffness: 75,
+                                  duration: 0.3
+                                }}
                               >SHUFFLE {item.tracks.total} SONG{item.tracks.total > 1 && "S"}</Button>
                             </div>
                           )}
