@@ -25,7 +25,6 @@ const ShufflePage = ({ location }) => {
     }).then(response => {
       return response.json()
     }).then(response => {
-      console.log(response)
       return {
         error: response.error ? true : false,
         data: response
@@ -75,137 +74,136 @@ const ShufflePage = ({ location }) => {
 
   return (
     <LibraryLayout>
-      {
-        // ContentContainer height snaps to smaller size when a playlist is selected.
-        // TODO: Add transition effect to the height proeprty of ContentContainer
-      }
       <ContentContainer>
         {
           loading ? <LoadingSpinner /> : (
             error ? <ErrorDialog>Error: <br/> {error.message}</ErrorDialog> : (
               <div>
-                  <AnimatePresence>
-                <motion.h2 
-                  style={{fontSize: "28px", marginBottom: "16px" }}
-                  layout
-                  initial={{
-                    opacity: 0,
-                    x: -200
-                  }} 
-                  animate={{
-                    opacity: 1,
-                    x: 0
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: 200
-                  }}
-                  transition={{
-                    type: "spring",
-                    mass: 0.35,
-                    stiffness: 75,
-                    duration: 0.3
-                  }}
-                >
-                  Select a playlist
-                </motion.h2>
-                {
-                  playlists.items.map((item) => {
-                    return (
-                      // Check to see if the user owns the current playlist
-                      <>
-                      <PlaylistCard 
-                        image={item.images.length === 3 ? item.images[1].url : item.images[0].url} 
-                        disabled={item.owner.id === location.state.id ? false : true} 
-                        key={item.id}
-                        id={item.id}
-                        onClick={() => setSelected(item.id)}
-                        item={item}
-                      >
-                        <p style={{marginBottom:'4px', fontFamily: 'GothamSSm-Book', fontSize: '18px'}}>
-                        {item.name}
-                        </p>
-                        <p style={{color: '#919496', fontFamily: 'GothamSSm-Book', fontSize: '12px'}}>
-                          {item.tracks.total} Songs
-                        </p>
-                      </PlaylistCard>
-                      { selected === item.id && (
-                        <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
-                          <Button
-                            onClick={() => navigate('/shuffleprogress')}
-                            initial={{
-                              opacity: 0,
-                              scale: 0
-                            }} 
-                            animate={{
-                              opacity: 1,
-                              scale: 1
-                            }}
-                            exit={{
-                              opacity: 0,
-                            }}
-                            transition={{
-                              type: "spring",
-                              mass: 0.35,
-                              stiffness: 75,
-                              duration: 0.3
-                            }}
-                            >SHUFFLE {item.tracks.total} SONG{item.tracks.total > 1 && "S"}</Button>
-                        </div>
-                      )}
-                      </>
-                    )
-                  })
-                }
-                <motion.div
-                  layout
-                  style={{display: 'flex', alignItems: 'center'}}
-                  layout
-                  initial={{
-                    opacity: 0,
-                    x: -200
-                  }} 
-                  animate={{
-                    opacity: 1,
-                    x: 0
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: 200
-                  }}
-                  transition={{
-                    type: "spring",
-                    mass: 0.35,
-                    stiffness: 75,
-                    duration: 0.3
-                  }}
-                >
-                  { playlists.items < playlists.total && (
-                    <Button
-                      color="primary"
-                      variant="outline"
-                      animate={{
-                        opacity: 1,
-                        x: 0
-                      }}
-                      exit={{
-                        opacity: 0,
-                        x: 200
-                      }}
-                      transition={{
-                        type: "spring",
-                        mass: 0.35,
-                        stiffness: 75,
-                        duration: 0.3
-                      }}
-                      >
-                      LOAD MORE
-                    </Button>
-                  )
-                }
+                <AnimatePresence>
+                  <motion.h2 
+                    key="1"
+                    style={{fontSize: "28px", marginBottom: "16px" }}
+                    layout
+                    initial={{
+                      opacity: 0,
+                      x: -200
+                    }} 
+                    animate={{
+                      opacity: 1,
+                      x: 0
+                    }}
+                    exit={{
+                      opacity: 0,
+                      x: 200
+                    }}
+                    transition={{
+                      type: "spring",
+                      mass: 0.35,
+                      stiffness: 75,
+                      duration: 0.3
+                    }}
+                  >
+                    Select a playlist
+                  </motion.h2>
+                </AnimatePresence>
+                    
+                <AnimatePresence>
+                  {
+                    playlists.items.map((item) => {
+                      return (
+                        // Check to see if the user owns the current playlist
+                        <React.Fragment key={item.id}>
+                          <PlaylistCard 
+                            image={item.images.length === 3 ? item.images[1].url : item.images[0].url} 
+                            disabled={item.owner.id === location.state.id ? false : true} 
+                            key={item.id}
+                            id={item.id}
+                            onClick={() => setSelected(item.id)}
+                            item={item}
+                            >
+                            <p style={{marginBottom:'4px', fontFamily: 'GothamSSm-Book', fontSize: '18px'}}>
+                            {item.name}
+                            </p>
+                            <p style={{color: '#919496', fontFamily: 'GothamSSm-Book', fontSize: '12px'}}>
+                              {item.tracks.total} Songs
+                            </p>
+                          </PlaylistCard>
+                          { selected === item.id && (
+                            <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+                              <Button
+                              onClick={() => navigate('/shuffleprogress', {state: item})}
+                              initial={{
+                                opacity: 0,
+                                scale: 0
+                              }} 
+                              animate={{
+                                opacity: 1,
+                                scale: 1
+                              }}
+                              exit={{
+                                opacity: 0,
+                              }}
+                              transition={{
+                                type: "spring",
+                                mass: 0.35,
+                                stiffness: 75,
+                                duration: 0.3
+                              }}
+                              >SHUFFLE {item.tracks.total} SONG{item.tracks.total > 1 && "S"}</Button>
+                            </div>
+                          )}
+                        </React.Fragment>
+                      )
+                    })
+                  }
+                  <motion.div
+                    layout
+                    style={{display: 'flex', alignItems: 'center'}}
+                    layout
+                    initial={{
+                      opacity: 0,
+                      x: -200
+                    }} 
+                    animate={{
+                      opacity: 1,
+                      x: 0
+                    }}
+                    exit={{
+                      opacity: 0,
+                      x: 200
+                    }}
+                    transition={{
+                      type: "spring",
+                      mass: 0.35,
+                      stiffness: 75,
+                      duration: 0.3
+                    }}
+                  >
+                    { playlists.items < playlists.total && (
+                      <Button
+                        color="primary"
+                        variant="outline"
+                        animate={{
+                          opacity: 1,
+                          x: 0
+                        }}
+                        exit={{
+                          opacity: 0,
+                          x: 200
+                        }}
+                        transition={{
+                          type: "spring",
+                          mass: 0.35,
+                          stiffness: 75,
+                          duration: 0.3
+                        }}
+                        >
+                        LOAD MORE
+                      </Button>
+                    )}
                   </motion.div>
                 </AnimatePresence>
-                </div>
+              </div>
             )
           )
         }
