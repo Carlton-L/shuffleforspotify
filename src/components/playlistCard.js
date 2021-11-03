@@ -70,6 +70,7 @@ const PlaylistCard = ({children, image, onClick, disabled, loaded, item}) => {
       }}
       exit={{
         opacity: 0,
+        x: 200
       }}
       transition={{
         type: "spring",
