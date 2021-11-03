@@ -118,28 +118,11 @@ const CallbackPage = ({ location }) => {
               >
                 <h2 style={{fontSize: "28px", marginLeft: '20px'}}>Choose a method</h2>
               <Paper>
-                <Button 
-                  gutterTop
-                  variant={state.premium ? 'filled' : 'disabled'} 
-                  disabled={!state.premium}
-                >
-                  Add to Queue
-                </Button>
-                <p style={{marginBottom: '20px'}}>
-                  {state.premium ? (
-                    <>
-                    ADD SONGS FROM A<br/>
-                    PLAYLIST OR LIBRARY<br/>
-                    DIRECTLY TO YOUR QUEUE<br/>
-                    (300 SONG MAX)
-                    </>
-                  ) : (<>ONLY AVAILABLE WITH<br/>SPOTIFY PREMIUM</>)}
-                  </p>
                 <Button
                   gutterTop
-                  color="white"
+                  color="primary"
                   onClick={
-                    () => navigate("/shuffle", { state: state})
+                    () => navigate("/shuffle", { state: state })
                   }
                 >
                   Shuffle Playlist
@@ -147,20 +130,39 @@ const CallbackPage = ({ location }) => {
                 <p style={{marginBottom: '20px'}}>
                   SHUFFLE A PLAYLIST<br/>
                   IN PLACE<br/>
-                  (FOR LONGER PLAYLISTS)
                   </p>
-                <p style={{margin: '20px'}}>--- OR ---</p>
                 <Button
                   gutterTop
                   color="white"
-                  variant="disabled"
+                  variant="outline"
+                  onClick={
+                    () => navigate("/sort", { state: state })
+                  }
                 >
                   Sort Playlist
                 </Button>
                 <p style={{marginBottom: '20px'}}>
                   SORT A PLAYLIST USING<br/>
                   A VARIETY OF FILTERS<br/>
-                  (COMING SOON!)<br/>
+                  </p>
+                  <p style={{margin: '20px'}}>--- OR ---</p>
+                <Button 
+                  gutterTop
+                  variant={state.premium ? 'disabled' : 'disabled'} 
+                  //disabled={!state.premium}
+                  disabled={true}
+                >
+                  SHUFFLE LIBRARY
+                </Button>
+                <p style={{marginBottom: '20px'}}>
+                  {state.premium ? (
+                    <>
+                    SHUFFLE SONGS FROM<br/>
+                    YOUR LIBRARY DIRECTLY<br/>
+                    INTO YOUR QUEUE<br/>
+                    (COMING SOON)
+                    </>
+                  ) : (<>ONLY AVAILABLE WITH<br/>SPOTIFY PREMIUM</>)}
                   </p>
               </Paper>
               </motion.div>
