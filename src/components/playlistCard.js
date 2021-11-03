@@ -62,7 +62,6 @@ const PlaylistCard = ({children, image, onClick, disabled, loaded, item}) => {
       custom={selected}
       initial={{
         opacity: 0,
-        x: -200
       }}
       animate={{
         opacity: 1,
