@@ -78,35 +78,33 @@ const ShufflePage = ({ location }) => {
         {
           loading ? <LoadingSpinner /> : (
             error ? <ErrorDialog>Error: <br/> {error.message}</ErrorDialog> : (
-              <div>
-                <AnimatePresence>
-                  <motion.h2 
-                    key="1"
-                    style={{fontSize: "28px", marginBottom: "16px" }}
-                    layout
-                    initial={{
-                      opacity: 0,
-                      x: -200
-                    }} 
-                    animate={{
-                      opacity: 1,
-                      x: 0
-                    }}
-                    exit={{
-                      opacity: 0,
-                      x: 200
-                    }}
-                    transition={{
-                      type: "spring",
-                      mass: 0.35,
-                      stiffness: 75,
-                      duration: 0.3
-                    }}
-                  >
-                    Select a playlist
-                  </motion.h2>
-                </AnimatePresence>
-                    
+              <motion.div
+              initial={{
+                opacity: 0,
+                x: -200
+              }} 
+              animate={{
+                opacity: 1,
+                x: 0
+              }}
+              exit={{
+                opacity: 0,
+                x: 200
+              }}
+                transition={{
+                  type: "spring",
+                  mass: 0.35,
+                  stiffness: 75,
+                  duration: 0.3
+                }}
+              >
+                <motion.h2 
+                  key="1"
+                  style={{fontSize: "28px", marginBottom: "16px" }}
+                  layout
+                >
+                  Select a playlist
+                </motion.h2>
                 <AnimatePresence>
                   {
                     playlists.items.map((item) => {
@@ -162,11 +160,9 @@ const ShufflePage = ({ location }) => {
                     layout
                     initial={{
                       opacity: 0,
-                      x: -200
                     }} 
                     animate={{
                       opacity: 1,
-                      x: 0
                     }}
                     exit={{
                       opacity: 0,
@@ -203,7 +199,7 @@ const ShufflePage = ({ location }) => {
                     )}
                   </motion.div>
                 </AnimatePresence>
-              </div>
+              </motion.div>
             )
           )
         }
