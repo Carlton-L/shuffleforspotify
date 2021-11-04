@@ -14,6 +14,10 @@ const StyledContainer = styled(motion.div)`
   margin: 8px 0;
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   color: ${props => (props.disabled ? '#919496' : 'inherit')};
+  background-repeat: no-repeat;
+  background-image: linear-gradient(${props => props.theme.colors.primary.light}, ${props => props.theme.colors.primary.dark});
+  background-size: ${props => props.loaded}%;
+  transition: background-size 0.5s ease-out;
 }
 `
 
