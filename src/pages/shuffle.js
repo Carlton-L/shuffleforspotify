@@ -5,7 +5,7 @@ import LibraryLayout from '../layout/libraryLayout.js';
 import ContentContainer from '../components/contentContainer.js';
 import LoadingSpinner from '../components/loadingSpinner';
 import PlaylistCard from '../components/playlistCard';
-import ErrorDialog from '../components/errorDialog'
+import ErrorDialog from '../components/errorDialog';
 import Button from '../components/button.js';
 
 const ShufflePage = ({ location }) => {
@@ -59,6 +59,16 @@ const ShufflePage = ({ location }) => {
       return
     }
 
+    // Check for playlist with no image: we will assume that playlist is empty later
+    response.data.items.forEach((e, i, array) => {
+      if (e.images.length === 0) {
+        e.images.push({
+          url: null
+        })
+      }
+      return
+    })
+
     // TODO: I think there's a better way to set these using destructuring
     setPlaylists({
       offset: response.data.offset,
@@ -66,6 +76,7 @@ const ShufflePage = ({ location }) => {
       items: response.data.items,
       total: response.data.total
     })
+    console.log(response.data)
 
     setLoading(false);
 
@@ -109,10 +120,11 @@ const ShufflePage = ({ location }) => {
                     playlists.items.map((item) => {
                       return (
                         // Check to see if the user owns the current playlist
+                        // Disabled attribute checks for missing playlist image (hopefully only happens to empty playlists)
                         <React.Fragment key={item.id}>
                           <PlaylistCard 
                             image={item.images.length === 3 ? item.images[1].url : item.images[0].url} 
-                            disabled={item.owner.id === location.state.id ? false : true} 
+                            disabled={item.owner.id === location.state.id ? !item.images[0].url : true} 
                             key={item.id}
                             id={item.id}
                             onClick={() => setSelected(item.id)}
@@ -128,7 +140,7 @@ const ShufflePage = ({ location }) => {
                           { selected === item.id && (
                             <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
                               <Button
-                                onClick={() => navigate('/shuffleprogress', {state: item, replace: true})}
+                                onClick={() => navigate('/run', {state: {token: location.state.token, list: item, method: 'shuffle'}, replace: true})}
                                 color="primary"
                                 initial={{
                                   opacity: 0,
