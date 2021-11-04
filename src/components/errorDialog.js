@@ -7,11 +7,14 @@ const StyledContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 22px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 `
 
 const StyledContent = styled.div`
   font-family: 'GothamSSm-Book';
   min-width: 200px;
+  max-width: 250px;
   font-size 12px;
   text-align: center;
   margin-left: 5px;
