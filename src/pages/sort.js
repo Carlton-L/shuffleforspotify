@@ -59,6 +59,16 @@ const SortPage = ({ location }) => {
       return
     }
 
+    // Check for playlist with no image: we will assume that playlist is empty later
+    response.data.items.forEach((e, i, array) => {
+      if (e.images.length === 0) {
+        e.images.push({
+          url: null
+        })
+      }
+      return
+    })
+
     // TODO: I think there's a better way to set these using destructuring
     setPlaylists({
       offset: response.data.offset,
@@ -112,7 +122,7 @@ const SortPage = ({ location }) => {
                         <React.Fragment key={item.id}>
                           <PlaylistCard 
                             image={item.images.length === 3 ? item.images[1].url : item.images[0].url} 
-                            disabled={item.owner.id === location.state.id ? false : true} 
+                            disabled={item.owner.id === location.state.id ? !item.images[0].url : true} 
                             key={item.id}
                             id={item.id}
                             onClick={() => setSelected(item.id)}
