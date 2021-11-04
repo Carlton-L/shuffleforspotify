@@ -128,7 +128,7 @@ const SortPage = ({ location }) => {
                           { selected === item.id && (
                             <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
                               <Button
-                                onClick={() => navigate('/sortselect', {state: item, replace: true})}
+                                onClick={() => navigate('/sortselect', {state: {token: location.state.token, list: item}, replace: true})}
                                 color="white"
                                 variant="outline"
                                 initial={{
