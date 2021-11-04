@@ -151,3 +151,11 @@ const RunPage = ({ location }) => {
 }
 
 export default RunPage;
+
+/*
+The secret to finding the most efficient way to get to a Fisher-Yates shuffle:
+1) Create an algorithm that can find the longest string of items that are in the same order
+e.g 3, 10, 4, 2, 7, 8, 9, 1, 5, 6: 
+3, 4, 7, 8, 9 are all in the same order (least to greatest) as they would be on a number line.
+Therefore, when doing a sort, these numbers would not have to move. The others could move around them.
+*/
