@@ -1,14 +1,11 @@
 import * as React from 'react';
-import MainLayout from '../layout/mainLayout.js';
-import Hero from '../components/hero.js'
+import MainLayout from '../layout/mainLayout';
+import Hero from '../components/hero';
 
-const IndexPage = () => {
-
-  return (
-    <MainLayout>
-      <Hero />
-    </MainLayout>
-  )
-}
+const IndexPage = () => (
+  <MainLayout>
+    <Hero />
+  </MainLayout>
+);
 
 export default IndexPage;
