@@ -20,29 +20,35 @@ const fetchSongs = () => {
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
 
 const shuffleArray = (inputArray) => {
-  // Split array into two chunks
-  // If the length of the split array is > 2, recursively run the function on the first half
-  // if the length of the split array is > 2, recursively run the function on the second half
-  // Swap the order of the elements
-  // Concatenate
-
-  if(inputArray.length > 2) {
-    const array1 = inputArray.splice(Math.round(inputArray.length/2))
-    //console.log(inputArray, array1)
-    const shuffledArray1 = shuffleArray(array1)
-    const shuffledArray2 = shuffleArray(inputArray.reverse())
-    //console.log(shuffledArray1)
-    return shuffledArray2.concat(shuffledArray1)
-  } else if (inputArray.length === 2) {
-    const x = inputArray[0]
-    inputArray[0] = inputArray[1]
-    inputArray[1] = x
-    return inputArray
-  } else {
-    return inputArray
-  }
 
 }
+
+const findNonMovers = (shuffledArray) => {
+  // {First Element, Last Element, Compare Element, Elements[], Array[]}
+  shuffledArray.forEach((element, index, array) => {
+    // Starting element = element
+    const startingElement = element;
+    array.forEach((element, index, array) => {
+
+    })
+  })
+  // { Starting Element, Compare Element, Elements[] }
+  //  Select the first element, set it to Starting Element and Compare Element
+  // Add its index to Elements[]
+  // Iterate through the shuffledArray, comparing each element to Compare Element
+  // If any element is higher tham the Compare Element, add its index to Elements[]
+  // And set Compare Element to its value { value, index } and continue
+  // When the end of the list is reached, store Elements[]
+  // Then re-start the commparison, with the same StartingElement, but comparing only elements
+  // After the first element in Elements[]
+  // Store the new Elements[]
+  // Then repeat the process again, starting at the first element in the new Elements[]
+  // Stop when there are no more elements in the remaining list (between the new first element
+  // in elements and the end of the array) that are greater then the starting element
+  // Start the entire process over again, selecting a new Starting Element (Starting element index +1)
+}
+
+
 
 const RunPage = ({ location }) => {
   const [loaded, setLoaded] = React.useState(50);
@@ -54,12 +60,6 @@ const RunPage = ({ location }) => {
       navigate('/');
       return
     }
-
-    const shuffled = shuffleArray(array)
-    console.log(shuffled)
-    console.log(shuffleArray(shuffled))
-
-    console.log(location.state)
 
   }, [])
   
@@ -158,4 +158,32 @@ The secret to finding the most efficient way to get to a Fisher-Yates shuffle:
 e.g 3, 10, 4, 2, 7, 8, 9, 1, 5, 6: 
 3, 4, 7, 8, 9 are all in the same order (least to greatest) as they would be on a number line.
 Therefore, when doing a sort, these numbers would not have to move. The others could move around them.
+
++++ ONCE TIME A NUMBER IS MOVED, IT CAN NEVER BE MOVED AGAIN
+??? I CAN SAVE TIME BY IDENTIFYING GROUPS OF NUMBERS THAT ARE IN THE EXACT SAME ORDER (e.g. [3,4])
+    ANY STRING THAT INCLUDES THE FIRST OF THESE NUMBERS AUTOMATICALLY CONTAINS ALL OF THEM.
+    ALSO, IF THOSE NUMBERS ARE NOT PART OF THE LONGEST STRING AND DO NEED TO MOVE, THEY CAN BE 
+    MOVED IN A SINGLE OPERATION.
+
+Algorithm variations:
+1) Assume you can move single songs from any position in the list to any other position
+2) Assume you can move single songs from any position to the end of the array
+3) Assume you can move the song at the front/back of the array to any position
+4) Variation 1 plus you can move any consecutive range of songs to any other position
+
+--- Steps: ---
+First, download a list of all the songs
+Second, iterate through the list of songs, and create a new array
+  consisting of song IDs and a number (sequentially representing 
+  the starting order)
+Third, shuffle the new array using Fisher-Yates
+Fourth, iterate over the array and find all groups of songs that 
+  are in the EXACT same order (e.g. [3,4,5] or [8,9]), treat these
+  groups as a single object in the next step
+Fifth, iterate over the new array and locate the longest string of
+  songs that are still in ascending order after the shuffle
+  (these are the songs that will not need to move)
+
+--- Algorithm: ---
+
 */
