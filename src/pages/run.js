@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { navigate } from 'gatsby-link';
+import { navigate } from 'gatsby';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import LibraryLayout from '../layout/libraryLayout.js';
