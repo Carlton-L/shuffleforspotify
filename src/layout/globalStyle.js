@@ -1,10 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import GothamSSmMediumttf from '../fonts/GothamSSm-Medium.woff2';
+import GothamSSmMediumttf from '../fonts/GothamSSm-Medium.ttf';
 import GothamSSmMediumwoff from '../fonts/GothamSSm-Medium.woff2';
-import GothamSSmBoldttf from '../fonts/GothamSSm-Bold.woff2';
+import GothamSSmBoldttf from '../fonts/GothamSSm-Bold.ttf';
 import GothamSSmBoldwoff from '../fonts/GothamSSm-Bold.woff2';
-import GothamSSmBookttf from '../fonts/GothamSSm-Book.woff2';
+import GothamSSmBookttf from '../fonts/GothamSSm-Book.ttf';
 import GothamSSmBookwoff from '../fonts/GothamSSm-Book.woff2';
 
 const GlobalStyle = createGlobalStyle`
