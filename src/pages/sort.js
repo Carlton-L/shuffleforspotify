@@ -2,12 +2,12 @@
 import * as React from 'react';
 import { navigate } from 'gatsby';
 import { motion, AnimatePresence } from 'framer-motion';
-import LibraryLayout from '../layout/libraryLayout.js';
-import ContentContainer from '../components/contentContainer.js';
+import LibraryLayout from '../layout/libraryLayout';
+import ContentContainer from '../components/contentContainer';
 import LoadingSpinner from '../components/loadingSpinner';
 import PlaylistCard from '../components/playlistCard';
 import ErrorDialog from '../components/errorDialog';
-import Button from '../components/button.js';
+import Button from '../components/button';
 
 const SortPage = ({ location }) => {
   const [playlists, setPlaylists] = React.useState({});
@@ -26,9 +26,9 @@ const SortPage = ({ location }) => {
     }).then((response) => response.json()).then((response) => ({
       error: !!response.error,
       data: response
-    })).catch((error) => ({
+    })).catch((err) => ({
       error: true,
-      data: error
+      data: err
     }));
 
     return res;
@@ -55,7 +55,7 @@ const SortPage = ({ location }) => {
     }
 
     // Check for playlist with no image: we will assume that playlist is empty later
-    response.data.items.forEach((e, i, array) => {
+    response.data.items.forEach((e) => {
       if (e.images.length === 0) {
         e.images.push({
           url: null
@@ -176,7 +176,6 @@ const SortPage = ({ location }) => {
                   <motion.div
                     layout
                     style={{ display: 'flex', alignItems: 'center' }}
-                    layout
                     initial={{
                       opacity: 0,
                     }}
