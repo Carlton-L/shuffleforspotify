@@ -21,6 +21,18 @@ const createArray = (n) => {
   return array;
 };
 
+/*
+  Algorithm 2:
+  1. Pick an array element at random, pop it
+  2. Repeat for array.length/2 times
+  3. Collect all popped elements in another array
+  4. Sort the new array in descending order
+  5. Assign each element odd or even (true or false) at random
+  6. For each element in the new array, array.splice the element back into the old array
+  7. If the current element in the new array is even, put it at it's own index *2
+  8. If it's odd, put it at it's own index *2 +1
+*/
+
 const RunPage = ({ location }) => {
   const [loaded, setLoaded] = React.useState(50);
   const [songs, setSongs] = React.useState([]);
