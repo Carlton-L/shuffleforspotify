@@ -31,6 +31,7 @@ const createArray = (n) => {
   6. For each element in the new array, array.splice the element back into the old array
   7. If the current element in the new array is even, put it at it's own index *2
   8. If it's odd, put it at it's own index *2 +1
+
 */
 
 const RunPage = ({ location }) => {
